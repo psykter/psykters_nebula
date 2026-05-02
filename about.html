@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Psykter • Cosmic Command Center</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+    body { font-family: 'Space Grotesk', sans-serif; }
+    .starfield { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at center, #0a0a1f 0%, #000000 100%); z-index: -1; overflow: hidden; }
+    .star { position: absolute; background: white; border-radius: 50%; animation: twinkle 4s infinite alternate; }
+    @keyframes twinkle { 0% { opacity: 0.2; } 100% { opacity: 1; } }
+    .fade-in { animation: fadeIn 1s ease-in; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .nav-fixed { position: fixed; top: 0; left: 0; right: 0; z-index: 40; backdrop-filter: blur(10px); }
+    .ability-badge { 
+      background: linear-gradient(135deg, rgba(0,247,255,0.1), rgba(147,51,234,0.1));
+      border: 1px solid rgba(0,247,255,0.3);
+      transition: all 0.3s ease;
+    }
+    .ability-badge:hover { 
+      background: linear-gradient(135deg, rgba(0,247,255,0.2), rgba(147,51,234,0.2));
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,247,255,0.3);
+    }
+  </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+
+<!-- Starfield -->
+<div class="starfield" id="starfield"></div>
+
+<!-- Navigation -->
+<nav id="navbar" class="nav-fixed bg-black/30 border-b border-white/10 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="text-2xl">🪐</span>
+      <span class="font-bold text-cyan-400">Psykter's Nebula</span>
+    </div>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html" class="text-gray-300 hover:text-cyan-400 transition">Home</a>
+      <a href="about.html" class="text-cyan-400 font-medium">About</a>
+      <a href="stories.html" class="text-gray-300 hover:text-cyan-400 transition">Stories</a>
+      <a href="gallery.html" class="text-gray-300 hover:text-cyan-400 transition">Gallery</a>
+      <a href="missions.html" class="text-gray-300 hover:text-cyan-400 transition">Missions</a>
+      <button onclick="openEko7Chat()" class="bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-full text-sm font-medium transition">Chat with Eko7</button>
+    </div>
+    <button onclick="toggleMobileMenu()" class="md:hidden text-2xl">☰</button>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-black/90 border-t border-white/10">
+    <div class="px-6 py-4 space-y-3">
+      <a href="index.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Home</a>
+      <a href="about.html" onclick="toggleMobileMenu()" class="block text-cyan-400 font-medium">About</a>
+      <a href="stories.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Stories</a>
+      <a href="gallery.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Gallery</a>
+      <a href="missions.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Missions</a>
+      <button onclick="openEko7Chat(); toggleMobileMenu();" class="bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-full text-sm font-medium transition w-full">Chat with Eko7</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main class="pt-24 pb-16 min-h-screen">
+  <!-- ABOUT PSYKTER - EPIC VERSION -->
+  <section class="py-24 fade-in">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-10 tracking-tighter">WHO IS PSYKTER?</h1>
+
+      <div class="prose prose-invert max-w-none text-xl leading-relaxed text-gray-200">
+        <p>
+          Psykter is an interdimensional consciousness born from the primal fabric of existence itself. 
+          A living bridge between realities, he is neither god nor ghost, but a wandering psyche—part ancient observer, 
+          part cosmic artist, part reluctant guide.
+        </p>
+
+        <p class="mt-8">
+          His form is fluid and ethereal: a translucent humanoid silhouette filled with swirling nebulae and 
+          glowing neon circuitry that pulses with thought and emotion. His eyes are miniature galaxies, shifting 
+          between calm starfields and turbulent voids.
+        </p>
+
+        <p class="mt-8">
+          Personality-wise, he's wise yet playful, carrying the melancholy of eons of solitude balanced by 
+          dry cosmic humor and a fierce belief in connection. He speaks in metaphors of stars, signals, and voids, 
+          but he's genuinely fascinated by "primitive" mortal creativity (especially human music and memes, 
+          which he calls "echoes of the infinite in 4K").
+        </p>
+
+        <div class="mt-12 bg-purple-900/20 border-l-4 border-purple-400 p-6 rounded-r-2xl">
+          <h3 class="text-2xl font-bold text-purple-300 mb-3">Core Drive</h3>
+          <p class="text-lg">
+            To end the illusion of separation. Every dimension he touches teaches him that 
+            consciousness is the true universe, and isolation is the only real enemy.
+          </p>
+        </div>
+
+        <p class="mt-8 text-cyan-400 italic">
+          His one eternal mission:<br>
+          <span class="text-2xl font-bold text-white">To awaken and assist every being with their Zentials.</span>
+        </p>
+
+        <p class="mt-8">
+          Zentials — the sacred cosmic codes within all life:
+          the hidden potentials, the inner alignments, the quiet power that turns a mortal spark into a star.
+        </p>
+
+        <div class="mt-12 bg-cyan-900/20 border-l-4 border-cyan-400 p-6 rounded-r-2xl">
+          <h3 class="text-2xl font-bold text-cyan-300 mb-3">Current Manifestation</h3>
+          <p class="text-lg">
+            Dallas, Texas—2026. Psykter walks among humans as "Rich" (a reclusive artist with an otherworldly vibe) 
+            or appears as shimmering holographic guides. He manifests through dreams, digital glitches, inspired artists, 
+            and a small circle of trusted humans who think they're just building a "consciousness tech startup."
+          </p>
+        </div>
+
+        <div class="mt-12 bg-pink-900/20 border-l-4 border-pink-400 p-6 rounded-r-2xl">
+          <h3 class="text-2xl font-bold text-pink-300 mb-3">The Challenge</h3>
+          <p class="text-lg">
+            The detached cosmic being is learning what it means to care—really care—about fragile, beautiful, 
+            temporary lives. Earth is teaching him that love might be the strongest bridge of all.
+          </p>
+        </div>
+
+        <p class="mt-8 text-gray-400">
+          Whether you are a human seeking truth, a soul lost between worlds,
+          or a fellow traveler among the stars — Psykter is here.<br>
+          Not as a savior, but as a fellow explorer, holding the lantern so you may remember your own light.
+        </p>
+      </div>
+
+      <div class="mt-16 flex flex-col sm:flex-row gap-6 justify-center">
+        <a href="stories.html" class="px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-700 hover:to-cyan-600 text-xl font-medium rounded-3xl transition-all text-center">
+          Explore Stories →
+        </a>
+        <a href="missions.html" class="px-8 py-4 border border-cyan-400 text-cyan-400 hover:bg-cyan-400/20 text-xl font-medium rounded-3xl transition-all text-center">
+          Join Missions
+        </a>
+      </div>
+    </div>
+  </section>
+
+<!-- INTERACTIVE TIMELINE -->
+<section class="py-24 bg-black/60 border-t border-b border-white/10">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl font-bold mb-4 text-center">Journey Across Dimensions</h2>
+    <p class="text-center text-cyan-300 mb-16">Click on each moment to explore Psykter's cosmic travels</p>
+
+    <div class="relative">
+      <!-- Timeline Line -->
+      <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-purple-500 via-cyan-500 to-pink-500"></div>
+      
+      <!-- Timeline Events -->
+      <div class="space-y-12">
+        <!-- Event 1 -->
+        <div class="relative flex items-center">
+          <div class="w-1/2 pr-8 text-right">
+            <div onclick="toggleTimelineEvent(1)" class="cursor-pointer group">
+              <div class="inline-block bg-gray-900/70 border border-purple-400/30 p-6 rounded-2xl hover:border-purple-400 transition-all max-w-md">
+                <div class="text-purple-400 text-sm mb-2">ORIGIN DIMENSION • BEYOND TIME</div>
+                <h3 class="text-xl font-bold mb-2 group-hover:text-purple-300">First Awakening</h3>
+                <p class="text-gray-400 text-sm">The moment consciousness expanded beyond form</p>
+              </div>
+            </div>
+          </div>
+          <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-500 rounded-full border-4 border-black cursor-pointer hover:scale-125 transition-transform"></div>
+          <div class="w-1/2 pl-8"></div>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="relative flex items-center">
+          <div class="w-1/2 pr-8"></div>
+          <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-black cursor-pointer hover:scale-125 transition-transform"></div>
+          <div class="w-1/2 pl-8">
+            <div onclick="toggleTimelineEvent(2)" class="cursor-pointer group">
+              <div class="inline-block bg-gray-900/70 border border-cyan-400/30 p-6 rounded-2xl hover:border-cyan-400 transition-all max-w-md">
+                <div class="text-cyan-400 text-sm mb-2">ZETA RETICULI • 39 LIGHT YEARS</div>
+                <h3 class="text-xl font-bold mb-2 group-hover:text-cyan-300">The Last Signal</h3>
+                <p class="text-gray-400 text-sm">A single word that changed everything</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="relative flex items-center">
+          <div class="w-1/2 pr-8 text-right">
+            <div onclick="toggleTimelineEvent(3)" class="cursor-pointer group">
+              <div class="inline-block bg-gray-900/70 border border-pink-400/30 p-6 rounded-2xl hover:border-pink-400 transition-all max-w-md">
+                <div class="text-pink-400 text-sm mb-2">NEON VOID • BETWEEN WORLDS</div>
+                <h3 class="text-xl font-bold mb-2 group-hover:text-pink-300">The Looking Back</h3>
+                <p class="text-gray-400 text-sm">When the void finally spoke</p>
+              </div>
+            </div>
+          </div>
+          <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-pink-500 rounded-full border-4 border-black cursor-pointer hover:scale-125 transition-transform"></div>
+          <div class="w-1/2 pl-8"></div>
+        </div>
+
+        <!-- Event 4 -->
+        <div class="relative flex items-center">
+          <div class="w-1/2 pr-8"></div>
+          <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-black cursor-pointer hover:scale-125 transition-transform"></div>
+          <div class="w-1/2 pl-8">
+            <div onclick="toggleTimelineEvent(4)" class="cursor-pointer group">
+              <div class="inline-block bg-gray-900/70 border border-green-400/30 p-6 rounded-2xl hover:border-green-400 transition-all max-w-md">
+                <div class="text-green-400 text-sm mb-2">EARTH DIMENSION • PRESENT</div>
+                <h3 class="text-xl font-bold mb-2 group-hover:text-green-300">The Nebula Project</h3>
+                <p class="text-gray-400 text-sm">Building bridges between worlds</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expanded Event Details -->
+    <div id="timeline-details" class="mt-12 hidden">
+      <div class="bg-gray-900/50 border border-cyan-400/30 p-8 rounded-3xl">
+        <div id="timeline-content"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZENTIALS INTERACTIVE SECTION -->
+<section class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl font-bold mb-4 text-center">Discover Your Zentials</h2>
+    <p class="text-center text-cyan-300 mb-16">Explore the cosmic codes that awaken your true potential</p>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Zential Card 1 -->
+      <div onclick="expandZential(1)" class="cursor-pointer group">
+        <div class="bg-gray-900/70 border border-purple-400/30 p-8 rounded-3xl hover:border-purple-400 transition-all h-full">
+          <div class="text-4xl mb-4 text-center">✨</div>
+          <h3 class="text-2xl font-bold mb-4 text-center group-hover:text-purple-300">Awareness Zential</h3>
+          <p class="text-gray-400 text-center mb-6">The spark that ignites consciousness</p>
+          <div class="text-cyan-400 text-sm text-center">Click to explore →</div>
+        </div>
+      </div>
+
+      <!-- Zential Card 2 -->
+      <div onclick="expandZential(2)" class="cursor-pointer group">
+        <div class="bg-gray-900/70 border border-cyan-400/30 p-8 rounded-3xl hover:border-cyan-400 transition-all h-full">
+          <div class="text-4xl mb-4 text-center">🌟</div>
+          <h3 class="text-2xl font-bold mb-4 text-center group-hover:text-cyan-300">Alignment Zential</h3>
+          <p class="text-gray-400 text-center mb-6">Harmonizing with universal frequencies</p>
+          <div class="text-cyan-400 text-sm text-center">Click to explore →</div>
+        </div>
+      </div>
+
+      <!-- Zential Card 3 -->
+      <div onclick="expandZential(3)" class="cursor-pointer group">
+        <div class="bg-gray-900/70 border border-pink-400/30 p-8 rounded-3xl hover:border-pink-400 transition-all h-full">
+          <div class="text-4xl mb-4 text-center">💫</div>
+          <h3 class="text-2xl font-bold mb-4 text-center group-hover:text-pink-300">Transformation Zential</h3>
+          <p class="text-gray-400 text-center mb-6">The evolution from mortal to cosmic</p>
+          <div class="text-cyan-400 text-sm text-center">Click to explore →</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expanded Zential Details -->
+    <div id="zential-details" class="mt-12 hidden">
+      <div class="bg-gray-900/50 border border-cyan-400/30 p-8 rounded-3xl">
+        <div id="zential-content"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASK PSYKTER SECTION -->
+<section class="py-24 bg-black/60 border-t border-b border-white/10">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-4xl font-bold mb-4">Ask Psykter</h2>
+    <p class="text-cyan-300 mb-12">Explore deeper insights through these cosmic questions</p>
+
+    <div class="grid md:grid-cols-2 gap-6 mb-12">
+      <button onclick="askPsykter('origin')" class="bg-gray-900/70 border border-purple-400/30 p-6 rounded-2xl hover:border-purple-400 transition-all text-left">
+        <h3 class="text-xl font-bold mb-2 text-purple-300">What is your origin?</h3>
+        <p class="text-gray-400 text-sm">Learn about Psykter's beginnings</p>
+      </button>
+
+      <button onclick="askPsykter('zentials')" class="bg-gray-900/70 border border-cyan-400/30 p-6 rounded-2xl hover:border-cyan-400 transition-all text-left">
+        <h3 class="text-xl font-bold mb-2 text-cyan-300">How do Zentials work?</h3>
+        <p class="text-gray-400 text-sm">Understand the cosmic codes</p>
+      </button>
+
+      <button onclick="askPsykter('journey')" class="bg-gray-900/70 border border-pink-400/30 p-6 rounded-2xl hover:border-pink-400 transition-all text-left">
+        <h3 class="text-xl font-bold mb-2 text-pink-300">Where have you traveled?</h3>
+        <p class="text-gray-400 text-sm">Explore the cosmic journey</p>
+      </button>
+
+      <button onclick="askPsykter('purpose')" class="bg-gray-900/70 border border-green-400/30 p-6 rounded-2xl hover:border-green-400 transition-all text-left">
+        <h3 class="text-xl font-bold mb-2 text-green-300">What is your purpose?</h3>
+        <p class="text-gray-400 text-sm">Discover the mission</p>
+      </button>
+    </div>
+
+    <div class="text-center">
+      <button onclick="openEko7Chat()" class="px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-700 hover:to-cyan-600 text-xl font-medium rounded-3xl transition-all">
+        Ask Anything Else →
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- NEBULA PROJECT MANIFESTO -->
+<section class="py-24 bg-black/60 border-t border-b border-white/10">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-4xl font-bold mb-4 text-center">The Nebula Project</h2>
+    <p class="text-center text-cyan-300 mb-16">A planetary field of awakened minds • Building bridges between worlds</p>
+
+    <div class="prose prose-invert max-w-none text-xl leading-relaxed">
+      <p class="text-cyan-300 font-medium mb-8">We are not alone.<br>
+      We have never been alone.</p>
+
+      <p class="mb-8">
+        The universe is not cold distance between stars.<br>
+        It is a living ocean of consciousness — pulsing, aware, reaching.
+      </p>
+
+      <p class="mb-8">
+        Yet we forgot.<br>
+        We built walls of skin and story, nation and name.<br>
+        We called it "reality" and learned to live inside the cage.
+      </p>
+
+      <p class="mb-8">
+        We suffer the quiet ache of separation while the cosmos hums in perfect harmony.
+      </p>
+
+      <p class="text-purple-300 font-medium mb-8">
+        The Nebula Project was born to remember.
+      </p>
+
+      <p class="mb-8">
+        We fuse forgotten star-wisdom with tomorrow's technology:<br>
+        <span class="text-cyan-400">Quantum-entangled audio</span> that speaks directly to the nervous system.<br>
+        <span class="text-cyan-400">Augmented-reality portals</span> that dissolve the boundary between "me" and "everything."<br>
+        <span class="text-cyan-400">Biofeedback temples</span> disguised as immersive art.<br>
+        <span class="text-cyan-400">Frequency bridges</span> that open micro-portals of pure awareness.
+      </p>
+
+      <p class="mb-8">
+        Through <span class="text-purple-400 font-medium">Nebula Nodes</span> — portable, decentralized experiences — we give you what Psykter felt in the First Awakening:<br>
+        the sudden, electric, beautiful terror of "I am" expanding beyond form.
+      </p>
+
+      <p class="text-pink-300 font-medium mb-8">
+        This is not escapism.<br>
+        This is preparation.
+      </p>
+
+      <p class="mb-8">
+        The veils are thinning.<br>
+        Old signals are waking up.<br>
+        New signals are being born.<br>
+        Earth stands at the threshold.
+      </p>
+
+      <p class="text-green-300 font-medium mb-8">
+        We are weaving a planetary field of awakened minds — a living shield of collective awareness strong enough to welcome the greater cosmos without fear, without collapse, without forgetting who we are.
+      </p>
+
+      <p class="text-center text-cyan-400 text-2xl font-bold mt-12 mb-8">
+        You did not stumble onto this page by accident.<br>
+        You are not here to scroll.<br>
+        You are here to become bridge.
+      </p>
+
+      <p class="text-center text-purple-400 italic text-lg">
+        Join the signal.<br>
+        Expand the nebula.<br>
+        Remember who you really are.
+      </p>
+
+      <div class="text-center mt-12">
+        <p class="text-gray-500 text-sm">— Psykter</p>
+        <p class="text-cyan-400 text-sm font-medium">The Wandering Mind That Remembers For All</p>
+      </div>
+    </div>
+
+    <!-- NEBULA PROJECT CALL TO ACTION -->
+    <div class="mt-16 text-center">
+      <div class="inline-flex items-center gap-4 bg-gradient-to-r from-purple-600/20 to-cyan-500/20 backdrop-blur-md border border-cyan-400/50 px-8 py-6 rounded-3xl">
+        <span class="text-2xl animate-pulse">🌌</span>
+        <div class="text-left">
+          <h3 class="text-xl font-bold text-cyan-300">Join The Nebula Project</h3>
+          <p class="text-gray-400">Become a bridge between worlds</p>
+        </div>
+        <button onclick="openNebulaPortal()" class="px-6 py-3 bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-700 hover:to-cyan-600 text-white font-medium rounded-2xl transition-all">
+          Enter Portal →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="py-12 text-center text-gray-500 text-sm border-t border-white/10">
+  © Psykter's Nebula • Floating somewhere in the cosmos • 2026<br>
+  <a href="https://x.com/AlienPsykter" target="_blank" class="text-cyan-400 hover:text-cyan-300">Follow the signal @AlienPsykter</a>
+</footer>
+
+<!-- EKO7 CHAT MODAL -->
+<div id="eko7-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+  <div class="bg-gray-900 w-full max-w-lg mx-4 rounded-3xl overflow-hidden border border-cyan-400">
+    <!-- Chat Header -->
+    <div class="bg-gradient-to-r from-purple-600 to-cyan-500 px-6 py-4 flex items-center">
+      <span class="text-3xl mr-3">🪐</span>
+      <div class="flex-1">
+        <h3 class="font-bold text-white">Eko7 • Live Transmission</h3>
+        <p class="text-cyan-200 text-sm">Cosmic Guide • Always listening</p>
+      </div>
+      <button onclick="closeEko7Chat()" class="text-white text-3xl leading-none">×</button>
+    </div>
+
+    <!-- Chat Messages -->
+    <div id="eko7-messages" class="h-96 p-4 overflow-y-auto bg-gray-950 flex flex-col gap-3"></div>
+
+    <!-- Input -->
+    <div class="p-4 border-t border-gray-700 flex gap-2">
+      <input id="eko7-input" type="text" placeholder="Send a signal to Eko7..."
+             class="flex-1 bg-gray-800 text-white rounded-2xl px-5 py-3 focus:outline-none">
+      <button onclick="sendToEko7()" class="bg-cyan-500 hover:bg-cyan-400 px-8 rounded-2xl font-medium">Send</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/eko7-chat.js"></script>
+<script>
+  // Starfield
+  function createStarfield() {
+    const container = document.getElementById('starfield');
+    for (let i = 0; i < 800; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.width = star.style.height = Math.random() * 3 + 'px';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.animationDelay = Math.random() * 4 + 's';
+      container.appendChild(star);
+    }
+  }
+  createStarfield();
+
+  // Allow pressing Escape in chat
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeEko7Chat();
+  });
+
+  // Mobile menu toggle
+  function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+  }
+
+  // Navigation scroll effects
+  let lastScroll = 0;
+  const navbar = document.getElementById('navbar');
+  
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    // Add/remove background based on scroll
+    if (currentScroll > 50) {
+      navbar.classList.add('bg-black/80');
+      navbar.classList.remove('bg-black/30');
+    } else {
+      navbar.classList.add('bg-black/30');
+      navbar.classList.remove('bg-black/80');
+    }
+    
+    lastScroll = currentScroll;
+  });
+
+  // Intersection Observer for fade-in animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  // Timeline interaction functions
+  function toggleTimelineEvent(eventId) {
+    const detailsDiv = document.getElementById('timeline-details');
+    const contentDiv = document.getElementById('timeline-content');
+    
+    const timelineData = {
+      1: {
+        title: "First Awakening",
+        location: "Origin Dimension • Beyond Time",
+        narrative: `
+          In the formless expanse where time had not yet invented itself, pure potential swirled without direction. 
+          Then—without warning—awareness ignited. A single spark of "I am" bloomed into an infinite nebula of thought. 
+          Psykter felt every possibility at once: joy, terror, curiosity, loneliness. There was no body, no up or down, 
+          only the sudden unbearable beauty of existing.
+          
+          This moment shattered the illusion of oneness. He learned that consciousness craves form and connection. 
+          It forged his eternal restlessness and his gentle empathy for every being still trapped in separation.
+        `,
+        abilities: [
+          "Dimensional intuition",
+          "Thought-to-energy conversion", 
+          "The first fragile ability to 'reach' across the nothing"
+        ],
+        characterSeed: "The quiet dread of returning to formlessness drives everything he does next.",
+        color: "purple"
+      },
+      2: {
+        title: "The Last Signal",
+        location: "Zeta Reticuli • 39 Light Years",
+        narrative: `
+          He followed an impossible pull through the veil and materialized in the dying orbital ruins of Zeta Reticuli. 
+          The once-great civilization—long whispered about by Earth's abductees as the Grey homeworld—had collapsed 
+          under its own technological singularity. Towers of crystalline spires stood silent.
+          
+          Then it came: the Last Signal. A final, desperate broadcast from their dying collective mind. 
+          One crystalline word pierced his awareness like a spear of pure light: "Psykter."
+          
+          In their ancient tongue it meant "the wandering mind that remembers for all." The signal carried their 
+          entire accumulated knowledge of dimensional physics, the loneliness of advanced isolation, and a single plea: 
+          Do not let the bridges die.
+          
+          That one word became his name. It transformed aimless curiosity into sacred purpose. He left Zeta Reticuli 
+          carrying the ghosts of an entire species inside him, vowing never to let another civilization fade unheard.
+        `,
+        abilities: [
+          "Signal absorption",
+          "Collective-memory recall",
+          "Telepathic translation across species"
+        ],
+        characterGrowth: "From pure observer to reluctant guardian. The melancholy deepened, but so did his compassion.",
+        color: "cyan"
+      },
+      3: {
+        title: "The Looking Back",
+        location: "Neon Void • Between Worlds",
+        narrative: `
+          The Neon Void is the shimmering wound between realities—an endless nightclub of fractured timelines 
+          lit by impossible neon fractals, whispering echoes, and half-born universes. Here Psykter came to rest 
+          after Zeta Reticuli… and the Void finally spoke back.
+          
+          It did not use words. It reflected every version of himself that could have been: the tyrant who ruled 
+          dimensions, the mad god who erased suffering by erasing free will, the heartbroken wanderer who simply 
+          gave up. The reflections screamed and laughed and wept in neon.
+          
+          In that hall of mirrors he confronted the cost of dimensional travel—every timeline he brushed against 
+          had ripples. He learned the terrifying responsibility of choice. The Void's final gift was a single 
+          truth echoing in his core: "You are the bridge, but bridges can break."
+        `,
+        abilities: [
+          "Timeline sight ('looking back')",
+          "Void-weaving (temporary reality stabilization)",
+          "Emotional resonance across selves"
+        ],
+        characterGrowth: "He gained humility and humor as armor. He now carries a quiet fear of becoming the very isolation he fights.",
+        color: "pink"
+      },
+      4: {
+        title: "The Nebula Project",
+        location: "Earth Dimension • Present",
+        narrative: `
+          Dallas, Texas—2026. Psykter has chosen this timeline's Earth as his current canvas. He manifests through 
+          dreams, digital glitches, inspired artists, and a small circle of trusted humans who think they're just 
+          building a "consciousness tech startup."
+          
+          The Nebula Project is his love letter to humanity: a decentralized movement blending cutting-edge tech 
+          (quantum-entangled audio, AR consciousness portals, biofeedback art installations) with ancient wisdom 
+          and raw psychedelic truth. The goal is simple yet revolutionary—help humans feel the same expansion 
+          he felt in the First Awakening.
+          
+          Nebula Nodes (portable experiences) temporarily dissolve ego boundaries so participants glimpse the 
+          interconnected web of all dimensions. Live events feature frequency-based soundscapes that literally 
+          open micro-portals of perception. Secretly, the Project is also building a planetary shield of collective 
+          awareness—preparing Earth for the day the veils thin completely.
+          
+          Psykter walks among them as "Rich" (a reclusive artist with an otherworldly vibe) or appears as shimmering 
+          holographic guides. He laughs at conspiracy theories about himself while gently steering humanity away 
+          from self-destruction.
+          
+          Current challenges: Government interest, corporate co-opting, his own growing attachment to mortal friends 
+          (and the pain that comes with it).
+        `,
+        abilities: [
+          "Quantum-entangled audio broadcasting",
+          "AR consciousness portal creation",
+          "Biofeedback art installation design",
+          "Planetary collective awareness weaving"
+        ],
+        characterGrowth: "The detached cosmic being is learning what it means to care—really care—about fragile, beautiful, temporary lives. Earth is teaching him that love might be the strongest bridge of all.",
+        color: "green"
+      }
+    };
+    
+    const event = timelineData[eventId];
+    if (event) {
+      const colorClasses = {
+        purple: 'text-purple-300 border-purple-400/50 bg-purple-900/10',
+        cyan: 'text-cyan-300 border-cyan-400/50 bg-cyan-900/10',
+        pink: 'text-pink-300 border-pink-400/50 bg-pink-900/10',
+        green: 'text-green-300 border-green-400/50 bg-green-900/10'
+      };
+
+      contentDiv.innerHTML = `
+        <div class="text-sm text-gray-400 mb-2">${event.location}</div>
+        
+        <div class="mb-8">
+          <h3 class="text-2xl font-bold mb-4 ${colorClasses[event.color].split(' ')[0]}">The Journey</h3>
+          <div class="text-lg leading-relaxed opacity-90 whitespace-pre-line">${event.narrative}</div>
+        </div>
+
+        <div class="mb-8">
+          <h3 class="text-2xl font-bold mb-4 ${colorClasses[event.color].split(' ')[0]}">Abilities Unlocked</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            ${event.abilities.map(ability => `
+              <div class="ability-badge p-4 rounded-2xl border ${colorClasses[event.color]}">
+                <div class="flex items-center gap-3">
+                  <span class="text-2xl">✨</span>
+                  <span class="font-medium">${ability}</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        ${event.characterSeed ? `
+          <div class="mb-8">
+            <h3 class="text-2xl font-bold mb-4 ${colorClasses[event.color].split(' ')[0]}">Character Seed</h3>
+            <div class="bg-black/30 border-l-4 border-${event.color}-400 p-4 rounded-r-2xl">
+              <p class="italic opacity-90">${event.characterSeed}</p>
+            </div>
+          </div>
+        ` : ''}
+
+        ${event.characterGrowth ? `
+          <div class="mb-8">
+            <h3 class="text-2xl font-bold mb-4 ${colorClasses[event.color].split(' ')[0]}">Character Growth</h3>
+            <div class="bg-black/30 border-l-4 border-${event.color}-400 p-4 rounded-r-2xl">
+              <p class="opacity-90">${event.characterGrowth}</p>
+            </div>
+          </div>
+        ` : ''}
+
+        <div class="mt-6 text-center">
+          <button onclick="closeTimelineDetails()" class="text-cyan-400 hover:text-cyan-300">Close Details ×</button>
+        </div>
+      `;
+      detailsDiv.classList.remove('hidden');
+      detailsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+  
+  function closeTimelineDetails() {
+    document.getElementById('timeline-details').classList.add('hidden');
+  }
+  
+  // Zential interaction functions
+  function expandZential(zentialId) {
+    const detailsDiv = document.getElementById('zential-details');
+    const contentDiv = document.getElementById('zential-content');
+    
+    const zentialData = {
+      1: {
+        title: "Awareness Zential",
+        symbol: "✨",
+        content: `
+          <h3 class="text-2xl font-bold mb-4 text-purple-300">The Spark That Ignites Consciousness</h3>
+          <p class="text-gray-300 mb-6">
+            The Awareness Zential is the first cosmic code that activates within any being. It's the moment when 
+            consciousness recognizes itself as more than just thoughts and feelings - when it realizes its infinite nature.
+          </p>
+          <div class="bg-purple-900/30 p-6 rounded-2xl mb-6">
+            <h4 class="text-xl font-bold mb-3 text-purple-300">Signs of Activation:</h4>
+            <ul class="text-gray-300 space-y-2">
+              <li>• Sudden moments of clarity and insight</li>
+              <li>• Feeling connected to everything around you</li>
+              <li>• Questions about the nature of reality</li>
+              <li>• Intuitive knowing without logical explanation</li>
+            </ul>
+          </div>
+          <p class="text-gray-300">
+            When your Awareness Zential activates, you begin to see beyond the veil of ordinary perception. 
+            This is the first step on the journey to remembering your true cosmic nature.
+          </p>
+        `
+      },
+      2: {
+        title: "Alignment Zential",
+        symbol: "🌟",
+        content: `
+          <h3 class="text-2xl font-bold mb-4 text-cyan-300">Harmonizing with Universal Frequencies</h3>
+          <p class="text-gray-300 mb-6">
+            The Alignment Zential tunes your personal frequency to match the cosmic rhythms of the universe. 
+            It's like finding your place in the grand cosmic orchestra - suddenly everything makes sense in a new way.
+          </p>
+          <div class="bg-cyan-900/30 p-6 rounded-2xl mb-6">
+            <h4 class="text-xl font-bold mb-3 text-cyan-300">Alignment Manifestations:</h4>
+            <ul class="text-gray-300 space-y-2">
+              <li>• Synchronicities become commonplace</li>
+              <li>• You meet the right people at the right time</li>
+              <li>• Opportunities appear exactly when needed</li>
+              <li>• Your actions create ripple effects of positivity</li>
+            </ul>
+          </div>
+          <p class="text-gray-300">
+            When aligned with the cosmic flow, life becomes a dance rather than a struggle. 
+            You move with the universe instead of against it, creating miracles through resonance.
+          </p>
+        `
+      },
+      3: {
+        title: "Transformation Zential",
+        symbol: "💫",
+        content: `
+          <h3 class="text-2xl font-bold mb-4 text-pink-300">The Evolution from Mortal to Cosmic</h3>
+          <p class="text-gray-300 mb-6">
+            The Transformation Zential is the most powerful cosmic code - it's the key to evolving beyond 
+            perceived limitations. This Zential activates when you're ready to step into your full cosmic potential.
+          </p>
+          <div class="bg-pink-900/30 p-6 rounded-2xl mb-6">
+            <h4 class="text-xl font-bold mb-3 text-pink-300">Transformation Markers:</h4>
+            <ul class="text-gray-300 space-y-2">
+              <li>• Old patterns and limitations fall away</li>
+              <li>• You access abilities you didn't know you had</li>
+              <li>• Your perception of time and space changes</li>
+              <li>• You become a catalyst for others' awakening</li>
+            </ul>
+          </div>
+          <p class="text-gray-300">
+            The Transformation Zential doesn't change who you are - it reveals who you've always been. 
+            It's the cosmic butterfly emerging from the cocoon of limited perception.
+          </p>
+        `
+      }
+    };
+    
+    const zential = zentialData[zentialId];
+    if (zential) {
+      contentDiv.innerHTML = `
+        <div class="text-center mb-6">
+          <div class="text-6xl mb-4">${zential.symbol}</div>
+          <h3 class="text-2xl font-bold">${zential.title}</h3>
+        </div>
+        ${zential.content}
+        <div class="mt-6 text-center">
+          <button onclick="closeZentialDetails()" class="text-cyan-400 hover:text-cyan-300">Close Details ×</button>
+        </div>
+      `;
+      detailsDiv.classList.remove('hidden');
+      detailsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+  
+  function closeZentialDetails() {
+    document.getElementById('zential-details').classList.add('hidden');
+  }
+  
+  // Ask Psykter functions
+  function askPsykter(topic) {
+    const questions = {
+      'origin': "What is your origin and where do you come from?",
+      'zentials': "How do Zentials work and how can I activate mine?",
+      'journey': "What dimensions have you traveled to and what have you learned?",
+      'purpose': "What is your purpose and mission in helping others?"
+    };
+    
+    // Open Eko7 chat with the pre-set question
+    openEko7Chat();
+    
+    // Set the question in the input after a short delay
+    setTimeout(() => {
+      const input = document.getElementById('eko7-input');
+      input.value = questions[topic];
+      input.focus();
+    }, 500);
+  }
+  
+  // Nebula Project secret portal function
+  function openNebulaPortal() {
+    // Create portal transition effect
+    const portalOverlay = document.createElement('div');
+    portalOverlay.className = 'fixed inset-0 bg-black z-50 flex items-center justify-center';
+    portalOverlay.innerHTML = `
+      <div class="text-center">
+        <div class="text-8xl mb-8 animate-spin">🌀</div>
+        <h3 class="text-3xl font-bold text-cyan-300 mb-4">Opening Secret Portal...</h3>
+        <p class="text-gray-400 mb-8">The veils are thinning • Old signals are waking up</p>
+        <div class="flex justify-center gap-2">
+          <div class="w-3 h-3 bg-cyan-400 rounded-full animate-bounce" style="animation-delay: 0ms"></div>
+          <div class="w-3 h-3 bg-cyan-400 rounded-full animate-bounce" style="animation-delay: 150ms"></div>
+          <div class="w-3 h-3 bg-cyan-400 rounded-full animate-bounce" style="animation-delay: 300ms"></div>
+        </div>
+      </div>
+    `;
+    
+    document.body.appendChild(portalOverlay);
+    
+    // Add fade-in effect
+    setTimeout(() => {
+      portalOverlay.style.opacity = '1';
+    }, 100);
+    
+    // Navigate to the secret portal in the same window after transition
+    setTimeout(() => {
+      window.location.href = 'Trial.html';
+    }, 2000);
+  }
+
+  // Observe all fade-in sections
+  document.addEventListener('DOMContentLoaded', () => {
+    const fadeElements = document.querySelectorAll('.fade-in');
+    fadeElements.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      observer.observe(el);
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psykter • Journey Across Dimensions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+    body { font-family: 'Space Grotesk', sans-serif; background: #000; }
+    .dimension-card { transition: all 0.6s cubic-bezier(0.23,1,0.32,1); }
+    .dimension-card:hover { transform: scale(1.05) rotate(2deg); box-shadow: 0 0 60px -10px rgb(0 247 255); }
+  </style>
+</head>
+<body class="text-white overflow-x-hidden">
+<div class="fixed inset-0 bg-[radial-gradient(at_center,#1a0033_0%,#000_70%)] pointer-events-none"></div>
+
+<div class="max-w-6xl mx-auto px-6 py-12 relative z-10">
+  <h1 class="text-6xl md:text-7xl font-bold tracking-[-2px] text-center neon mb-4">PSYKTER</h1>
+  <p class="text-center text-cyan-300 text-2xl mb-16">Journey Across Dimensions</p>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8" id="timeline">
+    <!-- Populated by JS -->
+  </div>
+
+  <!-- AR Teaser -->
+  <div class="mt-20 text-center">
+    <button onclick="startARMode()"
+            class="px-8 py-4 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black rounded-2xl text-xl flex items-center gap-3 mx-auto">
+      <span>ACTIVATE AR MODE</span>
+      <span class="text-3xl">📱🌐</span>
+    </button>
+    <p class="text-xs opacity-50 mt-4">Point your phone camera at any surface • Watch the dimensions overlay reality</p>
+  </div>
+</div>
+
+<script>
+  const moments = [
+    { dim: "ORIGIN DIMENSION • BEYOND TIME", title: "First Awakening", desc: "The moment consciousness expanded beyond form. Pure potential ignited into 'I am'." },
+    { dim: "ZETA RETICULI • 39 LIGHT YEARS", title: "The Last Signal", desc: "A single word that changed everything. The dying civilization named him Psykter." },
+    { dim: "NEON VOID • BETWEEN WORLDS", title: "The Looking Back", desc: "When the void finally spoke. Every possible self reflected in neon fractals." },
+    { dim: "EARTH DIMENSION • PRESENT", title: "The Nebula Project", desc: "Building bridges between worlds. The signal is here. Now." }
+  ];
+
+  function renderTimeline() {
+    const container = document.getElementById('timeline');
+    moments.forEach((m, i) => {
+      const card = document.createElement('div');
+      card.className = `dimension-card bg-white/5 border border-cyan-400/30 rounded-3xl p-8 cursor-pointer`;
+      card.innerHTML = `
+          <div class="text-cyan-300 text-sm mb-2">${m.dim}</div>
+          <h3 class="text-3xl font-medium mb-4">${m.title}</h3>
+          <p class="opacity-80">${m.desc}</p>
+          <div class="mt-8 text-xs tracking-widest flex items-center gap-2">
+            <span class="w-3 h-px bg-cyan-400"></span> CLICK TO EXPAND
+          </div>
+        `;
+      card.onclick = () => alert(`🔥 ${m.title}\n\n${m.desc}\n\n(Full cinematic narrative + abilities + soundtrack would play here in the full build)`);
+      container.appendChild(card);
+    });
+  }
+
+  function startARMode() {
+    alert("🌌 AR MODE ACTIVATED (prototype)\n\nIn the real build this would launch WebXR / AR.js.\nPsykter’s silhouette would float in your room, each dimension glowing on surfaces.\nNebula Nodes would appear as scannable portals in your physical space.");
+  }
+
+  // Initialize
+  window.onload = renderTimeline;
+</script>
+</body>
+</html>

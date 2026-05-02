@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEBULA PROJECT • Remember the Signal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: radial-gradient(circle at center, #0a0022, #000000); color: #e0d4ff; }
+        .neon { text-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff; }
+        .star-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: transparent url('https://picsum.photos/id/1015/1920/1080') center/cover no-repeat; opacity: 0.15; pointer-events: none; z-index: -1; }
+    </style>
+</head>
+<body class="min-h-screen font-mono overflow-x-hidden">
+<div class="star-bg"></div>
+
+<!-- HERO -->
+<section class="min-h-screen flex items-center justify-center text-center px-6 relative">
+    <div class="max-w-4xl">
+        <h1 class="text-7xl md:text-8xl font-bold tracking-tighter neon mb-4">NEBULA</h1>
+        <p class="text-4xl md:text-5xl text-cyan-300 mb-8">PROJECT</p>
+        <p class="text-xl md:text-2xl max-w-md mx-auto opacity-90">We are the bridge between worlds.<br>You are the signal.</p>
+        <button onclick="document.getElementById('journey').scrollIntoView({behavior:'smooth'})"
+                class="mt-12 px-10 py-5 bg-transparent border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black transition-all text-xl rounded-full flex items-center gap-3 mx-auto">
+            BEGIN THE JOURNEY
+            <span class="text-3xl">🌌</span>
+        </button>
+    </div>
+    <div class="absolute bottom-10 text-xs tracking-[4px] opacity-50">SCROLL FOR TRUTH • 2026 EARTH DIMENSION</div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="max-w-3xl mx-auto px-6 py-24 border-t border-b border-cyan-900/30">
+    <h2 class="text-4xl neon mb-8 text-center">THE MANIFESTO</h2>
+    <div class="prose prose-invert text-lg leading-relaxed">
+        <p>We are not alone. We have never been alone.</p>
+        <p>The universe is not empty space between stars — it is a living ocean of consciousness...</p>
+        <!-- (full manifesto text from above pasted here if you want it inline) -->
+    </div>
+</section>
+
+<!-- JOURNEY TEASER (links to full interactive version below) -->
+<section id="journey" class="py-24 bg-black/40">
+    <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-4xl neon text-center mb-12">JOURNEY ACROSS DIMENSIONS</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <!-- Cards for each moment – click opens modal with full story -->
+            <div onclick="showMoment(0)" class="cursor-pointer bg-gradient-to-br from-purple-900/30 to-transparent border border-cyan-400/30 p-6 rounded-3xl hover:border-cyan-400 transition-all">ORIGIN • First Awakening</div>
+            <div onclick="showMoment(1)" class="cursor-pointer bg-gradient-to-br from-purple-900/30 to-transparent border border-cyan-400/30 p-6 rounded-3xl hover:border-cyan-400 transition-all">ZETA RETICULI • The Last Signal</div>
+            <div onclick="showMoment(2)" class="cursor-pointer bg-gradient-to-br from-purple-900/30 to-transparent border border-cyan-400/30 p-6 rounded-3xl hover:border-cyan-400 transition-all">NEON VOID • The Looking Back</div>
+            <div onclick="showMoment(3)" class="cursor-pointer bg-gradient-to-br from-purple-900/30 to-transparent border border-cyan-400/30 p-6 rounded-3xl hover:border-cyan-400 transition-all">EARTH • The Nebula Project</div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER / JOIN -->
+<footer class="py-12 text-center border-t border-cyan-900/30">
+    <p class="text-cyan-300 mb-6">Join the signal → <span class="underline">hello@nebula-project.earth</span></p>
+    <div class="mb-8">
+        <a href="../about.html" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600/20 to-cyan-500/20 border border-cyan-400/50 text-cyan-300 hover:bg-cyan-400/10 rounded-2xl transition-all">
+            <span class="text-xl">←</span>
+            Return to Psykter's Nebula
+        </a>
+    </div>
+    <p class="text-xs opacity-50">© Psykter • All dimensions reserved</p>
+</footer>
+
+<!-- Simple modal for moments -->
+<script>
+    function showMoment(i) {
+        const moments = [
+            {title:"First Awakening", text:"In the formless expanse where time had not yet invented itself…"},
+            {title:"The Last Signal", text:"A single crystalline word pierced the silence: Psykter."},
+            {title:"The Looking Back", text:"The Neon Void reflected every version of himself that could have been…"},
+            {title:"The Nebula Project", text:"Building bridges between worlds. Right now. On Earth."}
+        ];
+        alert(moments[i].title + "\n\n" + moments[i].text + "\n\n(Full expanded story coming in the interactive prototype below)");
+    }
+</script>
+</body>
+</html>

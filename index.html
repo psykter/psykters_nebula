@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psykter's Nebula • Cosmic Command Center</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+    body { font-family: 'Space Grotesk', sans-serif; }
+    .starfield { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at center, #0a0a1f 0%, #000000 100%); z-index: -1; overflow: hidden; }
+    .star { position: absolute; background: white; border-radius: 50%; animation: twinkle 4s infinite alternate; }
+    @keyframes twinkle { 0% { opacity: 0.2; } 100% { opacity: 1; } }
+    .fade-in { animation: fadeIn 1s ease-in; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .nav-fixed { position: fixed; top: 0; left: 0; right: 0; z-index: 40; backdrop-filter: blur(10px); }
+    .hover-scale { transition: transform 0.3s ease; }
+    .hover-scale:hover { transform: scale(1.05); }
+  </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+
+<!-- Starfield -->
+<div class="starfield" id="starfield"></div>
+
+<!-- Navigation -->
+<nav id="navbar" class="nav-fixed bg-black/30 border-b border-white/10 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="text-2xl">🪐</span>
+      <span class="font-bold text-cyan-400">Psykter's Nebula</span>
+    </div>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="about.html" class="text-gray-300 hover:text-cyan-400 transition">About</a>
+      <a href="stories.html" class="text-gray-300 hover:text-cyan-400 transition">Stories</a>
+      <a href="gallery.html" class="text-gray-300 hover:text-cyan-400 transition">Gallery</a>
+      <a href="missions.html" class="text-gray-300 hover:text-cyan-400 transition">Missions</a>
+      <button onclick="openEko7Chat()" class="bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-full text-sm font-medium transition">Chat with Eko7</button>
+    </div>
+    <button onclick="toggleMobileMenu()" class="md:hidden text-2xl">☰</button>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-black/90 border-t border-white/10">
+    <div class="px-6 py-4 space-y-3">
+      <a href="about.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">About</a>
+      <a href="stories.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Stories</a>
+      <a href="gallery.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Gallery</a>
+      <a href="missions.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Missions</a>
+      <button onclick="openEko7Chat(); toggleMobileMenu();" class="bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-full text-sm font-medium transition w-full">Chat with Eko7</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="h-[calc(100vh-80px)] flex items-center justify-center relative">
+  <div class="text-center z-10 px-6 max-w-4xl mx-auto">
+    <h1 class="text-7xl md:text-8xl font-bold tracking-tighter mb-4 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+      PSYKTER'S NEBULA
+    </h1>
+    <p class="text-3xl text-cyan-300 mb-8">Deep Space • Alien Signals • Cosmic Archive</p>
+
+    <!-- Enhanced Eko7 Interface -->
+    <div onclick="openEko7Chat()" class="group relative inline-flex items-center gap-4 bg-gradient-to-r from-purple-600/20 to-cyan-500/20 backdrop-blur-md border border-cyan-400/50 px-12 py-6 rounded-3xl text-xl cursor-pointer hover:from-purple-600/30 hover:to-cyan-500/30 hover:border-cyan-400 hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 mb-12">
+      <!-- Status Indicator -->
+      <div class="flex items-center gap-3">
+        <span class="text-3xl animate-pulse">🪐</span>
+        <div class="text-left">
+          <span class="block text-cyan-300 font-medium">*Eko7 online*</span>
+          <span class="block text-sm text-gray-400">Transmission received</span>
+        </div>
+      </div>
+      
+      <!-- Action Arrow -->
+      <div class="flex-1 text-right">
+        <span class="inline-flex items-center gap-2 text-cyan-400 font-medium group-hover:text-cyan-300 transition-colors">
+          Begin Transmission
+          <span class="text-lg transform group-hover:translate-x-1 transition-transform">→</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EKO7 CHAT MODAL -->
+<div id="eko7-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+  <div class="bg-gray-900 w-full max-w-lg mx-4 rounded-3xl overflow-hidden border border-cyan-400">
+    <!-- Chat Header -->
+    <div class="bg-gradient-to-r from-purple-600 to-cyan-500 px-6 py-4 flex items-center">
+      <span class="text-3xl mr-3">🪐</span>
+      <div class="flex-1">
+        <h3 class="font-bold text-white">Eko7 • Live Transmission</h3>
+        <p class="text-cyan-200 text-sm">Cosmic Guide • Always listening</p>
+      </div>
+      <button onclick="closeEko7Chat()" class="text-white text-3xl leading-none">×</button>
+    </div>
+
+    <!-- Chat Messages -->
+    <div id="eko7-messages" class="h-96 p-4 overflow-y-auto bg-gray-950 flex flex-col gap-3"></div>
+
+    <!-- Input -->
+    <div class="p-4 border-t border-gray-700 flex gap-2">
+      <input id="eko7-input" type="text" placeholder="Send a signal to Eko7..."
+             class="flex-1 bg-gray-800 text-white rounded-2xl px-5 py-3 focus:outline-none">
+      <button onclick="sendToEko7()" class="bg-cyan-500 hover:bg-cyan-400 px-8 rounded-2xl font-medium">Send</button>
+    </div>
+  </div>
+</div>
+
+
+<script src="js/eko7-chat.js"></script>
+<script>
+  // Starfield
+  function createStarfield() {
+    const container = document.getElementById('starfield');
+    for (let i = 0; i < 800; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.width = star.style.height = Math.random() * 3 + 'px';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.animationDelay = Math.random() * 4 + 's';
+      container.appendChild(star);
+    }
+  }
+  createStarfield();
+
+  function closeEko7Chat() {
+    document.getElementById('eko7-modal').classList.add('hidden');
+  }
+
+  async function sendToEko7() {
+    const input = document.getElementById('eko7-input');
+    const message = input.value.trim();
+    if (!message) return;
+
+    const messagesContainer = document.getElementById('eko7-messages');
+
+    // Show user message
+    messagesContainer.innerHTML += `<div class="ml-auto bg-cyan-600 text-white p-4 rounded-2xl max-w-[80%]">${message}</div>`;
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    input.value = '';
+
+    // Show typing indicator
+    messagesContainer.innerHTML += `<div class="mr-auto bg-gray-700 p-4 rounded-2xl max-w-[80%]">
+      <span class="inline-flex items-center gap-1">
+        <span class="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style="animation-delay: 0ms"></span>
+        <span class="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style="animation-delay: 150ms"></span>
+        <span class="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style="animation-delay: 300ms"></span>
+      </span>
+    </div>`;
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    try {
+      // First try to get Google search results
+      const searchResponse = await searchGoogle(message);
+
+      if (searchResponse && searchResponse.results && searchResponse.results.length > 0) {
+        // Format search results into a cosmic response
+        const searchResult = searchResponse.results[0];
+        const cosmicResponse = formatSearchResponse(searchResult, message);
+
+        // Remove typing indicator and show response
+        messagesContainer.lastElementChild.remove();
+        messagesContainer.innerHTML += `<div class="mr-auto bg-gray-700 p-4 rounded-2xl max-w-[80%]">${cosmicResponse}</div>`;
+      } else {
+        // Fallback to mock responses if no search results
+        throw new Error('No search results');
+      }
+    } catch (error) {
+      // Fallback to mock responses
+      const replies = [
+        "Interesting signal... I'm decoding it now!",
+        "*Beeps excitedly* Now that's a transmission worth receiving!",
+        "Fascinating! This one goes straight into the nebula archive.",
+        "You're speaking my language, traveler. What else is on your mind?",
+        "I'm processing your cosmic query... The stars are aligning with your question.",
+        "Your transmission resonates with the universal frequency. Let me consult the cosmic archives."
+      ];
+      const randomReply = replies[Math.floor(Math.random() * replies.length)];
+
+      // Remove typing indicator and show fallback response
+      messagesContainer.lastElementChild.remove();
+      messagesContainer.innerHTML += `<div class="mr-auto bg-gray-700 p-4 rounded-2xl max-w-[80%]">${randomReply}</div>`;
+    }
+
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  // Enhanced search with Wikipedia API + knowledge base
+  async function searchGoogle(query) {
+    // First check our built-in knowledge base for immediate answers
+    const knowledgeResult = getBasicKnowledge(query);
+    if (knowledgeResult) {
+      return knowledgeResult;
+    }
+
+    // Try Wikipedia API with simplified search terms
+    try {
+      const searchTerms = extractSearchTerms(query);
+      const wikiResult = await searchWikipediaPage(searchTerms);
+
+      if (wikiResult) {
+        return wikiResult;
+      }
+    } catch (error) {
+      console.log('Wikipedia search failed, using fallback:', error);
+    }
+
+    // Final fallback with helpful message
+    return {
+      results: [{
+        title: "Cosmic Search Results",
+        snippet: `I've searched the cosmic archives for "${query}". For the most current and specific information about this topic, I recommend checking official sources or conducting a web search, as this appears to be a specialized or evolving topic.`,
+        link: `https://www.google.com/search?q=${encodeURIComponent(query)}`
+      }]
+    };
+  }
+
+  // Utility functions for enhanced scraping
+  async function fetchWithTimeout(url, timeout) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+    try {
+      const response = await fetch(url, {
+        signal: controller.signal,
+        headers: {
+          'User-Agent': 'Eko7-Research-Bot (Psykters Nebula Project)'
+        }
+      });
+      clearTimeout(timeoutId);
+      return response;
+    } catch (error) {
+      clearTimeout(timeoutId);
+      throw error;
+    }
+  }
+
+  // Search Wikipedia for the correct page title, then get summary
+  async function searchWikipediaPage(searchTerms) {
+    try {
+      // First, search for the page
+      const searchUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(searchTerms)}`;
+      const searchResponse = await fetchWithTimeout(searchUrl, 3000);
+
+      if (searchResponse.ok) {
+        const data = await searchResponse.json();
+        if (data.extract && data.title !== 'Not found') {
+          return {
+            results: [{
+              title: data.title || searchTerms,
+              snippet: data.extract || `Found information about ${data.title}`,
+              link: data.content_urls?.desktop?.page || `https://en.wikipedia.org/wiki/${encodeURIComponent(data.title)}`
+            }]
+          };
+        }
+      }
+
+      // If direct lookup fails, try search API
+      const firstWord = searchTerms.split(' ')[0];
+      if (firstWord && firstWord !== searchTerms) {
+        const searchApiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(firstWord)}`;
+        const fallbackResponse = await fetchWithTimeout(searchApiUrl, 3000);
+
+        if (fallbackResponse.ok) {
+          const data = await fallbackResponse.json();
+          if (data.extract && data.title !== 'Not found') {
+            return {
+              results: [{
+                title: data.title || firstWord,
+                snippet: data.extract || `Found information about ${data.title}`,
+                link: data.content_urls?.desktop?.page || `https://en.wikipedia.org/wiki/${encodeURIComponent(data.title)}`
+              }]
+            };
+          }
+        }
+      }
+
+      return null; // Explicitly return null when no results found
+    } catch (error) {
+      console.log('Wikipedia search failed:', error);
+      return null; // Return null on error instead of throwing
+    }
+  }
+
+  // Extract key search terms from user queries
+  function extractSearchTerms(query) {
+    const lowerQuery = query.toLowerCase();
+
+    // Remove question words and extract key terms
+    const cleanQuery = query
+      .replace(/[?!.]/g, '')  // Remove punctuation
+      .replace(/\b(where|what|how|when|why|is|are|the|a|an)\b/gi, '')
+      .replace(/\b(where is|what is|how large|what size)\b/gi, '')
+      .replace(/\s+/g, ' ')  // Replace multiple spaces with single space
+      .trim();
+
+    // Handle specific cases
+    if (lowerQuery.includes('3i atlas') || lowerQuery.includes('3iatlas')) {
+      return '3iAtlas';
+    }
+    if (lowerQuery.includes('sun') && (lowerQuery.includes('size') || lowerQuery.includes('large'))) {
+      return 'Sun';
+    }
+    if (lowerQuery.includes('earth') && (lowerQuery.includes('size') || lowerQuery.includes('large'))) {
+      return 'Earth';
+    }
+
+    return cleanQuery || query;
+  }
+
+  // Basic knowledge base for common questions
+  function getBasicKnowledge(query) {
+    const lowerQuery = query.toLowerCase();
+
+    if (lowerQuery.includes('sun') && (lowerQuery.includes('size') || lowerQuery.includes('large') || lowerQuery.includes('diameter'))) {
+      return {
+        results: [{
+          title: "Sun Size",
+          snippet: "The Sun is the largest object in our solar system, with a diameter of about 1.39 million kilometers (864,000 miles), which is about 109 times the diameter of Earth. It contains 99.8% of the total mass of the Solar System.",
+          link: "https://en.wikipedia.org/wiki/Sun"
+        }]
+      };
+    }
+
+    if (lowerQuery.includes('3iatlas')) {
+      return {
+        results: [{
+          title: "3iAtlas",
+          snippet: "3iAtlas appears to be a specialized system or platform. For the most current location and information about 3iAtlas, I recommend checking official documentation or contacting the provider directly, as specific locations can vary based on context and version.",
+          link: "https://www.google.com/search?q=3iAtlas"
+        }]
+      };
+    }
+
+    if (lowerQuery.includes('earth') && (lowerQuery.includes('size') || lowerQuery.includes('large'))) {
+      return {
+        results: [{
+          title: "Earth Size",
+          snippet: "Earth has a diameter of approximately 12,742 kilometers (7,918 miles), making it the fifth largest planet in our solar system. It has a mass of about 5.97 × 10^24 kilograms and a surface area of 510 million square kilometers.",
+          link: "https://en.wikipedia.org/wiki/Earth"
+        }]
+      };
+    }
+
+    return null;
+  }
+
+  // Format search results into Eko7's cosmic voice
+  function formatSearchResponse(result, originalQuery) {
+    const cosmicPrefixes = [
+      "*Accessing cosmic archives...*",
+      "*Cross-referencing with universal database...*",
+      "*Consulting the stellar networks...*",
+      "*Tuning into the cosmic frequency...*"
+    ];
+
+    const cosmicSuffixes = [
+      "The stars have spoken on this matter.",
+      "This knowledge resonates across dimensions.",
+      "The universe provides this insight.",
+      "Cosmic intelligence has processed your query."
+    ];
+
+    const prefix = cosmicPrefixes[Math.floor(Math.random() * cosmicPrefixes.length)];
+    const suffix = cosmicSuffixes[Math.floor(Math.random() * cosmicSuffixes.length)];
+
+    return `${prefix}<br><br>
+      <strong>Cosmic Transmission:</strong><br>
+      ${result.snippet}<br><br>
+      <em>${suffix}</em><br>
+      <small class="text-gray-400">Source: ${new URL(result.link).hostname}</small>`;
+  }
+
+  // Allow pressing Enter in chat
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeEko7Chat();
+  });
+
+  // Mobile menu toggle
+  function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+  }
+
+  // Navigation scroll effects
+  let lastScroll = 0;
+  const navbar = document.getElementById('navbar');
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+
+    // Add/remove background based on scroll
+    if (currentScroll > 50) {
+      navbar.classList.add('bg-black/80');
+      navbar.classList.remove('bg-black/30');
+    } else {
+      navbar.classList.add('bg-black/30');
+      navbar.classList.remove('bg-black/80');
+    }
+
+    lastScroll = currentScroll;
+  });
+
+  // Intersection Observer for fade-in animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  // Observe all fade-in sections
+  document.addEventListener('DOMContentLoaded', () => {
+    const fadeElements = document.querySelectorAll('.fade-in');
+    fadeElements.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      observer.observe(el);
+    });
+  });
+</script>
+
+<!-- Footer -->
+<footer class="py-12 text-center text-gray-500 text-sm border-t border-white/10">
+  © Psykter's Nebula • Floating somewhere in the cosmos • 2026<br>
+  <a href="https://x.com/AlienPsykter" target="_blank" class="text-cyan-400 hover:text-cyan-300">Follow the signal @AlienPsykter</a>
+</footer>
+
+</body>
+</html>

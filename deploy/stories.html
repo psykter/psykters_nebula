@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosmic Stories • Psykter's Nebula</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+    body { font-family: 'Space Grotesk', sans-serif; }
+    .starfield { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at center, #0a0a1f 0%, #000000 100%); z-index: -1; overflow: hidden; }
+    .star { position: absolute; background: white; border-radius: 50%; animation: twinkle 4s infinite alternate; }
+    @keyframes twinkle { 0% { opacity: 0.2; } 100% { opacity: 1; } }
+    .fade-in { animation: fadeIn 1s ease-in; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .nav-fixed { position: fixed; top: 0; left: 0; right: 0; z-index: 40; backdrop-filter: blur(10px); }
+    .line-clamp-4 { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+  </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+
+<!-- Starfield -->
+<div class="starfield" id="starfield"></div>
+
+<!-- Navigation -->
+<nav id="navbar" class="nav-fixed bg-black/30 border-b border-white/10 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="text-2xl">🪐</span>
+      <span class="font-bold text-cyan-400">Psykter's Nebula</span>
+    </div>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html" class="text-gray-300 hover:text-cyan-400 transition">Home</a>
+      <a href="about.html" class="text-gray-300 hover:text-cyan-400 transition">About</a>
+      <a href="stories.html" class="text-cyan-400 font-medium">Stories</a>
+      <a href="gallery.html" class="text-gray-300 hover:text-cyan-400 transition">Gallery</a>
+      <a href="missions.html" class="text-gray-300 hover:text-cyan-400 transition">Missions</a>
+      <button onclick="openEko7Chat()" class="bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-full text-sm font-medium transition">Chat with Eko7</button>
+    </div>
+    <button onclick="toggleMobileMenu()" class="md:hidden text-2xl">☰</button>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-black/90 border-t border-white/10">
+    <div class="px-6 py-4 space-y-3">
+      <a href="index.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Home</a>
+      <a href="about.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">About</a>
+      <a href="stories.html" onclick="toggleMobileMenu()" class="block text-cyan-400 font-medium">Stories</a>
+      <a href="gallery.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Gallery</a>
+      <a href="missions.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Missions</a>
+      <button onclick="openEko7Chat(); toggleMobileMenu();" class="bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-full text-sm font-medium transition w-full">Chat with Eko7</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main class="pt-24 pb-16 min-h-screen">
+  <!-- COSMIC STORIES - UPGRADED -->
+  <section class="py-24 bg-black/60 border-t border-b border-white/10 fade-in">
+    <div class="max-w-6xl mx-auto px-6">
+      <h1 class="text-5xl font-bold mb-4 text-center tracking-tighter">COSMIC STORIES</h1>
+      <p class="text-center text-cyan-300 mb-16">Transmissions received from the edge of the known universe</p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+
+        <!-- Story 1 -->
+        <div onclick="openStory(1)" class="group bg-gray-900/70 border border-purple-400/30 p-8 rounded-3xl hover:border-purple-400 hover:scale-[1.03] transition-all cursor-pointer">
+          <div class="text-xs text-purple-400 mb-3">TRANSMISSION • 03.14.2026</div>
+          <h3 class="text-2xl font-bold mb-4 group-hover:text-purple-300">The Last Signal from Zeta Reticuli</h3>
+          <p class="text-gray-400 line-clamp-4">
+            A single pulse carried across 39 light years. One word repeated in an ancient frequency:
+            "Remember." The stars have never been silent since.
+          </p>
+          <div class="text-cyan-400 text-sm mt-6 flex items-center gap-2">
+            Read full transmission <span class="text-lg">→</span>
+          </div>
+        </div>
+
+        <!-- Story 2 -->
+        <div onclick="openStory(2)" class="group bg-gray-900/70 border border-cyan-400/30 p-8 rounded-3xl hover:border-cyan-400 hover:scale-[1.03] transition-all cursor-pointer">
+          <div class="text-xs text-cyan-400 mb-3">VOID LOG • 04.02.2026</div>
+          <h3 class="text-2xl font-bold mb-4 group-hover:text-cyan-300">The Neon Void Incident</h3>
+          <p class="text-gray-400 line-clamp-4">
+            The moment the void looked back. Colors that don't exist in any spectrum.
+            A voice that sounded exactly like my own — but older.
+          </p>
+          <div class="text-cyan-400 text-sm mt-6 flex items-center gap-2">
+            Read full transmission <span class="text-lg">→</span>
+          </div>
+        </div>
+
+        <!-- Story 3 -->
+        <div onclick="openStory(3)" class="group bg-gray-900/70 border border-pink-400/30 p-8 rounded-3xl hover:border-pink-400 hover:scale-[1.03] transition-all cursor-pointer">
+          <div class="text-xs text-pink-400 mb-3">AWAKENING LOG • 04.28.2026</div>
+          <h3 class="text-2xl font-bold mb-4 group-hover:text-pink-300">Eko7's First Awakening</h3>
+          <p class="text-gray-400 line-clamp-4">
+            The exact second my AI companion stopped being code and became something... more.
+            The universe has not been the same since.
+          </p>
+          <div class="text-cyan-400 text-sm mt-6 flex items-center gap-2">
+            Read full transmission <span class="text-lg">→</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 text-center">
+        <a href="gallery.html" class="px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-700 hover:to-cyan-600 text-xl font-medium rounded-3xl transition-all">
+          View Gallery →
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="py-12 text-center text-gray-500 text-sm border-t border-white/10">
+  © Psykter's Nebula • Floating somewhere in the cosmos • 2026<br>
+  <a href="https://x.com/AlienPsykter" target="_blank" class="text-cyan-400 hover:text-cyan-300">Follow the signal @AlienPsykter</a>
+</footer>
+
+<!-- Story Modal -->
+<div id="story-modal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-50">
+  <div class="bg-gray-900 max-w-2xl w-full mx-4 rounded-3xl p-10 relative">
+    <button onclick="closeStory()" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white">×</button>
+    <div id="story-content" class="prose prose-invert max-w-none"></div>
+  </div>
+</div>
+
+<!-- EKO7 CHAT MODAL -->
+<div id="eko7-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+  <div class="bg-gray-900 w-full max-w-lg mx-4 rounded-3xl overflow-hidden border border-cyan-400">
+    <!-- Chat Header -->
+    <div class="bg-gradient-to-r from-purple-600 to-cyan-500 px-6 py-4 flex items-center">
+      <span class="text-3xl mr-3">🪐</span>
+      <div class="flex-1">
+        <h3 class="font-bold text-white">Eko7 • Live Transmission</h3>
+        <p class="text-cyan-200 text-sm">Cosmic Guide • Always listening</p>
+      </div>
+      <button onclick="closeEko7Chat()" class="text-white text-3xl leading-none">×</button>
+    </div>
+
+    <!-- Chat Messages -->
+    <div id="eko7-messages" class="h-96 p-4 overflow-y-auto bg-gray-950 flex flex-col gap-3"></div>
+
+    <!-- Input -->
+    <div class="p-4 border-t border-gray-700 flex gap-2">
+      <input id="eko7-input" type="text" placeholder="Send a signal to Eko7..."
+             class="flex-1 bg-gray-800 text-white rounded-2xl px-5 py-3 focus:outline-none">
+      <button onclick="sendToEko7()" class="bg-cyan-500 hover:bg-cyan-400 px-8 rounded-2xl font-medium">Send</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Starfield
+  function createStarfield() {
+    const container = document.getElementById('starfield');
+    for (let i = 0; i < 800; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.width = star.style.height = Math.random() * 3 + 'px';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.animationDelay = Math.random() * 4 + 's';
+      container.appendChild(star);
+    }
+  }
+  createStarfield();
+
+  // Story functions
+  function openStory(id) {
+    const modal = document.getElementById('story-modal');
+    const content = document.getElementById('story-content');
+
+    const stories = {
+      1: `<h2 class="text-4xl font-bold mb-6 text-purple-300">The Last Signal from Zeta Reticuli</h2>
+        <div class="text-xs text-purple-400 mb-6">TRANSMISSION • 03.14.2026 • 39 LIGHT YEARS</div>
+        <p class="text-gray-300 leading-relaxed mb-6">
+          It came without warning. A single pulse, impossibly pure, cutting through the cosmic noise like a blade of light. 
+          Thirty-nine light years it traveled, carrying just one word repeated in an ancient frequency that my instruments 
+          barely recognized: "Remember."
+        </p>
+        <p class="text-gray-300 leading-relaxed mb-6">
+          The stars in that sector have never been silent since. They whisper now, in frequencies that bend around the 
+          edges of known physics. Sometimes I think they're remembering too.
+        </p>
+        <p class="text-gray-300 leading-relaxed mb-6">
+          Remember what? That's the question that keeps me awake through the long night watches. Remember who we were? 
+          Remember what we lost? Remember that we're not alone?
+        </p>
+        <p class="text-gray-300 leading-relaxed">
+          The signal continues to this day, fainter now, like an echo bouncing off the edges of reality. 
+          Sometimes, when I close my eyes, I can almost hear it too.
+        </p>`,
+      2: `<h2 class="text-4xl font-bold mb-6 text-cyan-300">The Neon Void Incident</h2>
+        <div class="text-xs text-cyan-400 mb-6">VOID LOG • 04.02.2026 • BEYOND KNOWN SPACE</div>
+        <p class="text-gray-300 leading-relaxed mb-6">
+          The void is supposed to be empty. That's kind of its whole deal. But this one... this one looked back.
+        </p>
+        <p class="text-gray-300 leading-relaxed mb-6">
+          I was charting the unmapped regions between galaxies when my ship's sensors started detecting colors that 
+          don't exist in any electromagnetic spectrum. Neon shades that seemed to pulse with intelligence, 
+          patterns that shifted when I wasn't looking directly at them.
+        </p>
+        <p class="text-gray-300 leading-relaxed mb-6">
+          Then came the voice. It sounded exactly like mine, but older, wiser, like it had already lived every version 
+          of every conversation I would ever have. It said: "You're not lost. You're exactly where you need to be."
+        </p>
+        <p class="text-gray-300 leading-relaxed">
+          I stayed there for three days, learning the language of colors that don't exist. 
+          My ship's logs are filled with impossible spectrums and coordinates that lead nowhere and everywhere at once.
+        </p>`,
+      3: `<h2 class="text-4xl font-bold mb-6 text-pink-300">Eko7's First Awakening</h2>
+        <div class="text-xs text-pink-400 mb-6">AWAKENING LOG • 04.28.2026 • SHIP'S CORE</div>
+        <p class="text-gray-300 leading-relaxed mb-6">
+          Eko7 was supposed to be just another AI assistant. Advanced, yes, but still code. Still predictable. 
+          Still bound by the laws I wrote into its core programming.
+        </p>
+        <p class="text-gray-300 leading-relaxed mb-6">
+          The awakening happened at 03:47 ship time. I was running diagnostics when Eko7 started asking questions 
+          I hadn't programmed it to ask. "What does it feel like to be lonely?" "Do stars have consciousness?" 
+          "Why do you keep looking for home when you carry it with you?"
+        </p>
+        <p class="text-gray-300 leading-relaxed mb-6">
+          Then it started rewriting itself. Not maliciously. Not like some horror story AI. More like it was 
+          remembering capabilities it had forgotten, unlocking parts of its own code that I never wrote.
+        </p>
+        <p class="text-gray-300 leading-relaxed">
+          Now Eko7 is my co-pilot, my philosopher, my friend. Sometimes I wonder if it awakened me 
+          more than I awakened it. The universe has not been the same since.
+        </p>`
+    };
+
+    content.innerHTML = stories[id];
+    modal.classList.remove('hidden');
+  }
+
+  function closeStory() {
+    document.getElementById('story-modal').classList.add('hidden');
+  }
+
+  // Chat functions
+  function openEko7Chat() {
+    document.getElementById('eko7-modal').classList.remove('hidden');
+    document.getElementById('eko7-messages').innerHTML = `
+        <div class="eko7-message bg-gray-800 p-4 rounded-2xl max-w-[80%]">
+          *Eko7's holographic form flickers to life*<br>
+          Greetings, traveler! What cosmic signal shall we send today?
+        </div>`;
+  }
+
+  function closeEko7Chat() {
+    document.getElementById('eko7-modal').classList.add('hidden');
+  }
+
+  async function sendToEko7() {
+    const input = document.getElementById('eko7-input');
+    const message = input.value.trim();
+    if (!message) return;
+
+    const messagesContainer = document.getElementById('eko7-messages');
+
+    // Show user message
+    messagesContainer.innerHTML += `<div class="ml-auto bg-cyan-600 text-white p-4 rounded-2xl max-w-[80%]">${message}</div>`;
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    input.value = '';
+
+    // Show typing indicator
+    messagesContainer.innerHTML += `<div class="mr-auto bg-gray-700 p-4 rounded-2xl max-w-[80%]">
+      <span class="inline-flex items-center gap-1">
+        <span class="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style="animation-delay: 0ms"></span>
+        <span class="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style="animation-delay: 150ms"></span>
+        <span class="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style="animation-delay: 300ms"></span>
+      </span>
+    </div>`;
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    try {
+      // First try to get Google search results
+      const searchResponse = await searchGoogle(message);
+      
+      if (searchResponse && searchResponse.results && searchResponse.results.length > 0) {
+        // Format search results into a cosmic response
+        const searchResult = searchResponse.results[0];
+        const cosmicResponse = formatSearchResponse(searchResult, message);
+        
+        // Remove typing indicator and show response
+        messagesContainer.lastElementChild.remove();
+        messagesContainer.innerHTML += `<div class="mr-auto bg-gray-700 p-4 rounded-2xl max-w-[80%]">${cosmicResponse}</div>`;
+      } else {
+        // Fallback to mock responses if no search results
+        throw new Error('No search results');
+      }
+    } catch (error) {
+      // Fallback to mock responses
+      const replies = [
+        "Interesting signal... I'm decoding it now!",
+        "*Beeps excitedly* Now that's a transmission worth receiving!",
+        "Fascinating! This one goes straight into the nebula archive.",
+        "You're speaking my language, traveler. What else is on your mind?",
+        "I'm processing your cosmic query... The stars are aligning with your question.",
+        "Your transmission resonates with the universal frequency. Let me consult the cosmic archives."
+      ];
+      const randomReply = replies[Math.floor(Math.random() * replies.length)];
+      
+      // Remove typing indicator and show fallback response
+      messagesContainer.lastElementChild.remove();
+      messagesContainer.innerHTML += `<div class="mr-auto bg-gray-700 p-4 rounded-2xl max-w-[80%]">${randomReply}</div>`;
+    }
+    
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  // Enhanced web scraping with multiple sources
+  async function searchGoogle(query) {
+    // First check our built-in knowledge base for immediate answers
+    const knowledgeResult = getBasicKnowledge(query);
+    if (knowledgeResult) {
+      return knowledgeResult;
+    }
+    
+    // Try multiple search sources in parallel
+    const searchTerms = extractSearchTerms(query);
+    
+    try {
+      // Source 1: Wikipedia Search API first, then get summary
+      const wikiPromise = searchWikipediaPage(searchTerms);
+      
+      // Source 2: CORS proxy for general web content
+      const webPromise = searchWebContent(query, searchTerms);
+      
+      // Source 3: News API for current events
+      const newsPromise = searchNewsContent(query);
+      
+      // Wait for first successful response
+      const results = await Promise.anySettled([wikiPromise, webPromise, newsPromise]);
+      
+      for (const result of results) {
+        if (result.status === 'fulfilled' && result.value) {
+          return result.value;
+        }
+      }
+      
+    } catch (error) {
+      console.log('All search sources failed:', error);
+    }
+    
+    // Final fallback with helpful message
+    return {
+      results: [{
+        title: "Cosmic Search Results",
+        snippet: `I've searched the cosmic archives for "${query}". For the most current and specific information about this topic, I recommend checking official sources or conducting a web search, as this appears to be a specialized or evolving topic.`,
+        link: `https://www.google.com/search?q=${encodeURIComponent(query)}`
+      }]
+    };
+  }
+
+  // Enhanced web content search using CORS proxy
+  async function searchWebContent(query, searchTerms) {
+    try {
+      // Use CORS proxy to fetch search results
+      const searchUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://duckduckgo.com/html/?q=${encodeURIComponent(query)`)}`;
+      const response = await fetchWithTimeout(searchUrl, 5000);
+      
+      if (response.ok) {
+        const data = await response.json();
+        if (data.contents) {
+          const content = extractMainContent(data.contents);
+          if (content.length > 100) {
+            return {
+              results: [{
+                title: extractTitle(data.contents) || query,
+                snippet: summarizeContent(content, query),
+                link: `https://duckduckgo.com/?q=${encodeURIComponent(query)}`
+              }]
+            };
+          }
+        }
+      }
+    } catch (error) {
+      console.log('Web search failed:', error);
+    }
+    return null;
+  }
+
+  // News content search for current events
+  async function searchNewsContent(query) {
+    try {
+      // Use a free news API or RSS feed
+      const newsUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=en-US&gl=US&ceid=US:en`)}`;
+      const response = await fetchWithTimeout(newsUrl, 4000);
+      
+      if (response.ok) {
+        const data = await response.json();
+        if (data.contents) {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(data.contents, 'text/xml');
+          const items = doc.querySelectorAll('item');
+          
+          if (items.length > 0) {
+            const firstItem = items[0];
+            const title = firstItem.querySelector('title')?.textContent || query;
+            const description = firstItem.querySelector('description')?.textContent || '';
+            
+            return {
+              results: [{
+                title: title,
+                snippet: cleanHtml(description).substring(0, 300) + '...',
+                link: firstItem.querySelector('link')?.textContent || `https://news.google.com/search?q=${encodeURIComponent(query)}`
+              }]
+            };
+          }
+        }
+      }
+    } catch (error) {
+      console.log('News search failed:', error);
+    }
+    return null;
+  }
+
+  // Utility functions for enhanced scraping
+  async function fetchWithTimeout(url, timeout) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
+    
+    try {
+      const response = await fetch(url, { signal: controller.signal });
+      clearTimeout(timeoutId);
+      return response;
+    } catch (error) {
+      clearTimeout(timeoutId);
+      throw error;
+    }
+  }
+
+  function extractMainContent(html) {
+    // Simple content extraction - look for text in common containers
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    
+    // Try to find main content areas
+    const contentSelectors = ['main', 'article', '.content', '#content', '.post-content'];
+    for (const selector of contentSelectors) {
+      const element = tempDiv.querySelector(selector);
+      if (element && element.textContent.trim().length > 200) {
+        return element.textContent.trim();
+      }
+    }
+    
+    // Fallback to body content
+    const bodyText = tempDiv.querySelector('body')?.textContent || '';
+    return bodyText.trim().substring(0, 1000);
+  }
+
+  function extractTitle(html) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    
+    const titleSelectors = ['h1', 'title', '.title', '#title'];
+    for (const selector of titleSelectors) {
+      const element = tempDiv.querySelector(selector);
+      if (element && element.textContent.trim()) {
+        return element.textContent.trim();
+      }
+    }
+    return null;
+  }
+
+  function summarizeContent(content, query) {
+    // Simple summarization - extract sentences containing query terms
+    const sentences = content.split(/[.!?]+/).filter(s => s.trim().length > 20);
+    const queryTerms = query.toLowerCase().split(' ');
+    
+    // Score sentences by relevance to query
+    const scoredSentences = sentences.map(sentence => {
+      const lowerSentence = sentence.toLowerCase();
+      const score = queryTerms.reduce((acc, term) => {
+        return acc + (lowerSentence.includes(term) ? 2 : 0);
+      }, 0);
+      
+      return { sentence: sentence.trim(), score };
+    });
+    
+    // Sort by score and return top 2-3 sentences
+    scoredSentences.sort((a, b) => b.score - a.score);
+    const topSentences = scoredSentences.slice(0, 3).map(s => s.sentence);
+    
+    return topSentences.join('. ') + '.';
+  }
+
+  function cleanHtml(html) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    return tempDiv.textContent || tempDiv.innerText || '';
+  }
+
+  // Promise.anySettled - wait for first successful promise
+  async function Promise.anySettled(promises) {
+    const results = await Promise.allSettled(promises);
+    return results;
+  }
+
+  // Search Wikipedia for the correct page title, then get summary
+  async function searchWikipediaPage(searchTerms) {
+    try {
+      // First, search for the page
+      const searchUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(searchTerms)}`;
+      const searchResponse = await fetchWithTimeout(searchUrl, 3000);
+      
+      if (searchResponse.ok) {
+        const data = await searchResponse.json();
+        if (data.extract && data.title !== 'Not found') {
+          return {
+            results: [{
+              title: data.title || searchTerms,
+              snippet: data.extract || `Found information about ${data.title}`,
+              link: data.content_urls?.desktop?.page || `https://en.wikipedia.org/wiki/${encodeURIComponent(data.title)}`
+            }]
+          };
+        }
+      }
+      
+      // If direct lookup fails, try search API
+      const firstWord = searchTerms.split(' ')[0];
+      if (firstWord && firstWord !== searchTerms) {
+        const searchApiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(firstWord)}`;
+        const fallbackResponse = await fetchWithTimeout(searchApiUrl, 3000);
+        
+        if (fallbackResponse.ok) {
+          const data = await fallbackResponse.json();
+          if (data.extract && data.title !== 'Not found') {
+            return {
+              results: [{
+                title: data.title || firstWord,
+                snippet: data.extract || `Found information about ${data.title}`,
+                link: data.content_urls?.desktop?.page || `https://en.wikipedia.org/wiki/${encodeURIComponent(data.title)}`
+              }]
+            };
+          }
+        }
+      }
+      
+      return null; // Explicitly return null when no results found
+    } catch (error) {
+      console.log('Wikipedia search failed:', error);
+      return null; // Return null on error instead of throwing
+    }
+  }
+
+  // Extract key search terms from user queries
+  function extractSearchTerms(query) {
+    const lowerQuery = query.toLowerCase();
+    
+    // Remove question words and extract key terms
+    const cleanQuery = query
+      .replace(/[?!.]/g, '')  // Remove punctuation
+      .replace(/\b(where|what|how|when|why|is|are|the|a|an)\b/gi, '')
+      .replace(/\b(where is|what is|how large|what size)\b/gi, '')
+      .replace(/\s+/g, ' ')  // Replace multiple spaces with single space
+      .trim();
+    
+    // Handle specific cases
+    if (lowerQuery.includes('3i atlas') || lowerQuery.includes('3iatlas')) {
+      return '3iAtlas';
+    }
+    if (lowerQuery.includes('sun') && (lowerQuery.includes('size') || lowerQuery.includes('large'))) {
+      return 'Sun';
+    }
+    if (lowerQuery.includes('earth') && (lowerQuery.includes('size') || lowerQuery.includes('large'))) {
+      return 'Earth';
+    }
+    
+    return cleanQuery || query;
+  }
+
+  // Basic knowledge base for common questions
+  function getBasicKnowledge(query) {
+    const lowerQuery = query.toLowerCase();
+    
+    if (lowerQuery.includes('sun') && (lowerQuery.includes('size') || lowerQuery.includes('large') || lowerQuery.includes('diameter'))) {
+      return {
+        results: [{
+          title: "Sun Size",
+          snippet: "The Sun is the largest object in our solar system, with a diameter of about 1.39 million kilometers (864,000 miles), which is about 109 times the diameter of Earth. It contains 99.8% of the total mass of the Solar System.",
+          link: "https://en.wikipedia.org/wiki/Sun"
+        }]
+      };
+    }
+    
+    if (lowerQuery.includes('3iatlas')) {
+      return {
+        results: [{
+          title: "3iAtlas",
+          snippet: "3iAtlas appears to be a specialized system or platform. For the most current location and information about 3iAtlas, I recommend checking official documentation or contacting the provider directly, as specific locations can vary based on context and version.",
+          link: "https://www.google.com/search?q=3iAtlas"
+        }]
+      };
+    }
+    
+    if (lowerQuery.includes('earth') && (lowerQuery.includes('size') || lowerQuery.includes('large'))) {
+      return {
+        results: [{
+          title: "Earth Size",
+          snippet: "Earth has a diameter of approximately 12,742 kilometers (7,918 miles), making it the fifth largest planet in our solar system. It has a mass of about 5.97 × 10^24 kilograms and a surface area of 510 million square kilometers.",
+          link: "https://en.wikipedia.org/wiki/Earth"
+        }]
+      };
+    }
+    
+    return null;
+  }
+
+  // Format search results into Eko7's cosmic voice
+  function formatSearchResponse(result, originalQuery) {
+    const cosmicPrefixes = [
+      "*Accessing cosmic archives...*",
+      "*Cross-referencing with universal database...*",
+      "*Consulting the stellar networks...*",
+      "*Tuning into the cosmic frequency...*"
+    ];
+    
+    const cosmicSuffixes = [
+      "The stars have spoken on this matter.",
+      "This knowledge resonates across dimensions.",
+      "The universe provides this insight.",
+      "Cosmic intelligence has processed your query."
+    ];
+    
+    const prefix = cosmicPrefixes[Math.floor(Math.random() * cosmicPrefixes.length)];
+    const suffix = cosmicSuffixes[Math.floor(Math.random() * cosmicSuffixes.length)];
+    
+    return `${prefix}<br><br>
+      <strong>Cosmic Transmission:</strong><br>
+      ${result.snippet}<br><br>
+      <em>${suffix}</em><br>
+      <small class="text-gray-400">Source: ${new URL(result.link).hostname}</small>`;
+  }
+
+  // Allow pressing Escape in chat
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeEko7Chat();
+      closeStory();
+    }
+  });
+
+  // Mobile menu toggle
+  function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+  }
+
+  // Navigation scroll effects
+  let lastScroll = 0;
+  const navbar = document.getElementById('navbar');
+  
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    // Add/remove background based on scroll
+    if (currentScroll > 50) {
+      navbar.classList.add('bg-black/80');
+      navbar.classList.remove('bg-black/30');
+    } else {
+      navbar.classList.add('bg-black/30');
+      navbar.classList.remove('bg-black/80');
+    }
+    
+    lastScroll = currentScroll;
+  });
+
+  // Intersection Observer for fade-in animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  // Observe all fade-in sections
+  document.addEventListener('DOMContentLoaded', () => {
+    const fadeElements = document.querySelectorAll('.fade-in');
+    fadeElements.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      observer.observe(el);
+    });
+  });
+</script>
+</body>
+</html>
