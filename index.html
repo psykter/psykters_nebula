@@ -37,9 +37,9 @@
       width: 136px; height: 136px; border-radius: 50%;
       border: 4px solid var(--bg); object-fit: cover; background: #000; flex-shrink: 0;
     }
-    .meta h1 { font-size: 28px; font-weight: 700; line-height: 1.2; margin: 0; }
+    .meta h1 { font-size: 32px; font-weight: 700; line-height: 1.15; margin: 0; letter-spacing: 0.01em; }
     .handle { color: var(--muted); margin-top: 4px; font-size: 14px; }
-    .tagline { margin-top: 8px; font-style: italic; color: var(--accent); font-size: 16px; }
+    .tagline { margin-top: 8px; font-style: italic; color: var(--accent); font-size: 18px; }
     .actions { margin-left: auto; display: flex; gap: 10px; padding-bottom: 8px; }
     .btn {
       border: 0; border-radius: 18px; padding: 10px 18px;
@@ -69,10 +69,13 @@
       background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,.78));
     }
     .endcard {
-      position: relative; z-index: 1; padding: 24px;
-      font-size: 14px; line-height: 1.55; color: #e8e8e8;
+      position: relative; z-index: 1; padding: 28px 32px 32px;
+      font-size: 15px; line-height: 1.5; color: #e8e8e8;
+      width: 100%;
     }
-    .endcard em { color: var(--accent); font-style: normal; font-weight: 700; }
+    .endcard .unit { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #cfd3d8; }
+    .endcard em { color: var(--accent); font-style: normal; font-weight: 700; font-size: 20px; display: block; margin: 8px 0; }
+    .endcard .who { font-size: 16px; }
     .play-pill {
       position: absolute; top: 16px; left: 16px; z-index: 2;
       background: rgba(0,0,0,.6); border: 1px solid #555;
@@ -102,6 +105,27 @@
       font-size: 12px; background: #272727; border-radius: 999px;
       padding: 6px 10px; color: #ddd;
     }
+    .contact {
+      margin-top: 16px;
+      background: #141414;
+      border: 1px solid #2f2f2f;
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .contact h2 { font-size: 16px; margin: 0 0 8px; }
+    .contact p { color: #ccc; font-size: 14px; line-height: 1.6; margin: 0 0 12px; }
+    .contact a.mail {
+      display: inline-block;
+      color: #0b0b0b;
+      background: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 18px;
+      padding: 10px 16px;
+      font-size: 14px;
+    }
+    .contact .alt { margin-top: 12px; font-size: 13px; color: var(--muted); }
+    .contact .alt a { color: var(--accent); }
     .nav-fixed { position: fixed; top: 0; left: 0; right: 0; z-index: 40; backdrop-filter: blur(10px); }
     @media (max-width: 860px) {
       .identity { flex-wrap: wrap; align-items: center; margin-top: -36px; }
@@ -126,6 +150,7 @@
       <a href="stories.html" class="text-gray-300 hover:text-cyan-400 transition">Stories</a>
       <a href="gallery.html" class="text-gray-300 hover:text-cyan-400 transition">Gallery</a>
       <a href="missions.html" class="text-gray-300 hover:text-cyan-400 transition">Missions</a>
+      <a href="#contact" class="text-gray-300 hover:text-cyan-400 transition">Find me</a>
       <button type="button" onclick="openEko7Chat()" class="bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-full text-sm font-medium transition">Chat with Eko7</button>
     </div>
     <button type="button" onclick="toggleMobileMenu()" class="md:hidden text-2xl" aria-label="Menu">☰</button>
@@ -137,6 +162,7 @@
       <a href="stories.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Stories</a>
       <a href="gallery.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Gallery</a>
       <a href="missions.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Missions</a>
+      <a href="#contact" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Find me</a>
       <button type="button" onclick="openEko7Chat(); toggleMobileMenu();" class="bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-full text-sm font-medium transition w-full">Chat with Eko7</button>
     </div>
   </div>
@@ -165,6 +191,7 @@
       <a class="active" href="#home">Home</a>
       <a href="#video">The night</a>
       <a href="#about">About</a>
+      <a href="#contact">Find me</a>
     </nav>
 
     <div class="layout">
@@ -173,10 +200,10 @@
           <div class="player" style="background-image:url('assets/banner-2560x1440.jpg')">
             <div class="play-pill">WHITE SANDS · THE NIGHT</div>
             <div class="endcard">
-              3/9 Field Artillery · 214th Brigade · Fort Sill · 1992–1995<br />
-              White Sands Missile Range<br />
-              <em>Over the M577 TOC that night</em><br />
-              I was the medic. You were Commo. You were from California.
+              <div class="unit">3/9 FA · 214th Brigade · Fort Sill · 1992–1995</div>
+              <div class="unit">White Sands Missile Range</div>
+              <em>Over the M577 TOC that night</em>
+              <div class="who">I was the medic. You were Commo. You were from California.</div>
             </div>
           </div>
         </div>
@@ -186,6 +213,8 @@
         <div class="desc">I was a medic with 3rd Battalion, 9th Field Artillery, 214th Brigade, Fort Sill, Oklahoma, 1992–1995. We trained at White Sands Missile Range. I am looking for the commo who stood there with me that night. He was from California. I believe his last name was Riojas or Rosa. We both saw what was directly over the M577 — the tracked vehicle serving as our TOC, the tactical operations center, that night.
 
 If that is you: I remember. Please find me.
+
+Email: findme@psykter.net
 
 Psykter's Space
 From the cosmos to your imagination.</div>
@@ -224,6 +253,15 @@ I was the medic. Find me.</div>
             <span class="chip">Fort Sill 1992–1995</span>
             <span class="chip">M577 TOC</span>
             <span class="chip">White Sands</span>
+          </div>
+        </div>
+        <div class="contact" id="contact">
+          <h2>If you were Commo</h2>
+          <p>Write me. Say enough that I will know it is you. We can take it private from there.</p>
+          <a class="mail" href="mailto:findme@psykter.net?subject=3/9%20FA%20White%20Sands%20%E2%80%94%20I%20was%20Commo">findme@psykter.net</a>
+          <div class="alt">
+            Or <a href="https://www.youtube.com/@ir9721" target="_blank" rel="noopener">YouTube</a>
+            · <a href="https://x.com/AlienPsykter" target="_blank" rel="noopener">@AlienPsykter</a>
           </div>
         </div>
       </aside>
