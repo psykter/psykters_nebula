@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alien Invasion Defense · Psykter's Space</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="aid/css/aid.css" />
+  <link rel="icon" href="../assets/profile-dark-800.png" />
+  <style>
+    .site-bar {
+      width: 98%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 16px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+    }
+    .site-bar a { color: #8cebe6; text-decoration: none; margin-left: 16px; }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+  <div class="site-bar">
+    <a href="../index.html">Psykter's Space</a>
+    <div>
+      <a href="../crew.html">Crew</a>
+      <a href="../index.html">Home</a>
+    </div>
+  </div>
+  <header>
+    <h1>Alien Invasion Defense</h1>
+  </header>
+  <div class="container">
+    <div id="game-container">
+      <canvas id="gameCanvas"></canvas>
+    </div>
+    <div id="game-stats">
+      <div id="score">Score: 0</div>
+      <button id="start-btn" class="sci-fi-btn">Start</button>
+      <button id="pause-btn" class="sci-fi-btn">Pause</button>
+      <div id="lives">Lives: 3</div>
+    </div>
+  </div>
+  <footer>
+    <a href="../crew.html" class="back-btn">Back to Crew</a>
+  </footer>
+</div>
+<script>
+  const alienInvaderDarkUrl = "aid/images/alien-invader-dark.png";
+  const alienInvaderLightUrl = "aid/images/alien-invader-light.png";
+  const starFighterLv1Url = "aid/images/star_fighter_lv1.png";
+  const shootSoundUrl = "aid/sounds/shoot.mp3";
+  const explosionSoundUrl = "aid/sounds/explosion.mp3";
+</script>
+<script type="module" src="aid/js/game.js"></script>
+</body>
+</html>

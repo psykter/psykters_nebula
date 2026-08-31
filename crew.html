@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crew · Psykter's Space</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+    body { font-family: 'Space Grotesk', sans-serif; }
+    .starfield { position: fixed; inset: 0; background: radial-gradient(circle at center, #0a0a1f 0%, #000 100%); z-index: -1; overflow: hidden; }
+    .star { position: absolute; background: white; border-radius: 50%; animation: twinkle 4s infinite alternate; }
+    @keyframes twinkle { 0% { opacity: 0.2; } 100% { opacity: 1; } }
+    .nav-fixed { position: fixed; top: 0; left: 0; right: 0; z-index: 40; backdrop-filter: blur(10px); }
+  </style>
+</head>
+<body class="bg-black text-white">
+<div class="starfield" id="starfield"></div>
+
+<nav id="navbar" class="nav-fixed bg-black/70 border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <img src="assets/profile-dark-800.png" alt="" class="w-8 h-8 rounded-full object-cover" />
+      <span class="font-bold text-cyan-400">Psykter's Space</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html" class="text-gray-300 hover:text-cyan-400 transition">Home</a>
+      <a href="about.html" class="text-gray-300 hover:text-cyan-400 transition">About</a>
+      <a href="stories.html" class="text-gray-300 hover:text-cyan-400 transition">Stories</a>
+      <a href="gallery.html" class="text-gray-300 hover:text-cyan-400 transition">Gallery</a>
+      <a href="missions.html" class="text-gray-300 hover:text-cyan-400 transition">Missions</a>
+      <a href="crew.html" class="text-cyan-400 font-medium">Crew</a>
+      <a href="index.html#contact" class="text-gray-300 hover:text-cyan-400 transition">Find me</a>
+      <button type="button" onclick="openEko7Chat()" class="bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-full text-sm font-medium transition">Chat with Eko7</button>
+    </div>
+    <button type="button" onclick="toggleMobileMenu()" class="md:hidden text-2xl" aria-label="Menu">☰</button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden bg-black/90 border-t border-white/10">
+    <div class="px-6 py-4 space-y-3">
+      <a href="index.html" onclick="toggleMobileMenu()" class="block text-gray-300">Home</a>
+      <a href="about.html" onclick="toggleMobileMenu()" class="block text-gray-300">About</a>
+      <a href="stories.html" onclick="toggleMobileMenu()" class="block text-gray-300">Stories</a>
+      <a href="gallery.html" onclick="toggleMobileMenu()" class="block text-gray-300">Gallery</a>
+      <a href="missions.html" onclick="toggleMobileMenu()" class="block text-gray-300">Missions</a>
+      <a href="crew.html" onclick="toggleMobileMenu()" class="block text-cyan-400 font-medium">Crew</a>
+      <a href="index.html#contact" onclick="toggleMobileMenu()" class="block text-gray-300">Find me</a>
+      <button type="button" onclick="openEko7Chat(); toggleMobileMenu();" class="bg-cyan-500 px-4 py-2 rounded-full text-sm font-medium w-full">Chat with Eko7</button>
+    </div>
+  </div>
+</nav>
+
+<main class="pt-28 pb-20 px-6 max-w-6xl mx-auto">
+  <p class="text-cyan-400 text-sm tracking-widest uppercase mb-3">Entertainment wing</p>
+  <h1 class="text-5xl font-bold tracking-tight mb-4">Crew</h1>
+  <p class="text-gray-300 text-lg max-w-2xl mb-12">
+    Games, stories, and Eko7 — the public side of CosmicCrew, living next to the witness record.
+    This can change. The medic page on Home stays put.
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <a href="play/aid.html" class="block bg-gray-900/70 border border-cyan-400/30 rounded-3xl p-8 hover:border-cyan-400 hover:scale-[1.02] transition">
+      <div class="text-xs text-cyan-400 mb-3">PLAY</div>
+      <h2 class="text-2xl font-bold mb-2">Alien Invasion Defense</h2>
+      <p class="text-gray-400">Arcade from the CosmicCrew workshop. Arrow keys to move, space to fire.</p>
+    </a>
+    <a href="stories.html" class="block bg-gray-900/70 border border-purple-400/30 rounded-3xl p-8 hover:border-purple-400 hover:scale-[1.02] transition">
+      <div class="text-xs text-purple-400 mb-3">READ</div>
+      <h2 class="text-2xl font-bold mb-2">Cosmic Stories</h2>
+      <p class="text-gray-400">Transmissions and fiction. The imagination side of Psykter’s Space.</p>
+    </a>
+    <button type="button" onclick="openEko7Chat()" class="text-left bg-gray-900/70 border border-pink-400/30 rounded-3xl p-8 hover:border-pink-400 hover:scale-[1.02] transition">
+      <div class="text-xs text-pink-400 mb-3">TALK</div>
+      <h2 class="text-2xl font-bold mb-2">Eko7</h2>
+      <p class="text-gray-400">The alien guide. Chat from here without leaving the site.</p>
+    </button>
+    <a href="gallery.html" class="block bg-gray-900/70 border border-white/20 rounded-3xl p-8 hover:border-white/50 hover:scale-[1.02] transition">
+      <div class="text-xs text-gray-400 mb-3">SEE</div>
+      <h2 class="text-2xl font-bold mb-2">Gallery</h2>
+      <p class="text-gray-400">Visuals from the archive. More games and labs can plug in here later.</p>
+    </a>
+  </div>
+</main>
+
+<div id="eko7-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+  <div class="bg-gray-900 w-full max-w-lg mx-4 rounded-3xl overflow-hidden border border-cyan-400">
+    <div class="bg-gradient-to-r from-purple-600 to-cyan-500 px-6 py-4 flex items-center">
+      <span class="text-3xl mr-3">🪐</span>
+      <div class="flex-1">
+        <h3 class="font-bold text-white">Eko7 · Live Transmission</h3>
+        <p class="text-cyan-200 text-sm">Cosmic Guide · Always listening</p>
+      </div>
+      <button type="button" onclick="closeEko7Chat()" class="text-white text-3xl leading-none">×</button>
+    </div>
+    <div id="eko7-messages" class="h-96 p-4 overflow-y-auto bg-gray-950 flex flex-col gap-3"></div>
+    <div class="p-4 border-t border-gray-700 flex gap-2">
+      <input id="eko7-input" type="text" placeholder="Send a signal to Eko7..." class="flex-1 bg-gray-800 text-white rounded-2xl px-5 py-3 focus:outline-none" />
+      <button type="button" onclick="sendToEko7()" class="bg-cyan-500 hover:bg-cyan-400 px-8 rounded-2xl font-medium">Send</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/eko7-chat.js"></script>
+<script>
+  function toggleMobileMenu() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  }
+  document.getElementById('eko7-input').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') sendToEko7();
+  });
+  (function () {
+    const container = document.getElementById('starfield');
+    for (let i = 0; i < 200; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.width = star.style.height = Math.random() * 2 + 1 + 'px';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.animationDelay = Math.random() * 4 + 's';
+      container.appendChild(star);
+    }
+  })();
+</script>
+</body>
+</html>
