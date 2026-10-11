@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Psykter's Space · From the cosmos to your imagination</title>
-  <meta name="description" content="Psykter's Space. Veteran. Witness. White Sands Missile Range. I was the medic. Looking for my Commo." />
+  <meta name="description" content="Psykter's Space. Stories, pictures, and signals — from the cosmos to your imagination." />
   <link rel="icon" href="assets/profile-dark-800.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -87,13 +87,16 @@
       background: #272727; border-radius: 12px; padding: 14px 16px;
       font-size: 14px; line-height: 1.55; color: #ddd; white-space: pre-wrap;
     }
-    .script-box { margin-top: 22px; }
-    .script-box h2 { font-size: 16px; margin-bottom: 12px; }
-    .script {
-      background: #181818; border: 1px solid #2f2f2f; border-radius: 12px;
-      padding: 20px 22px; font-size: 15px; line-height: 1.7; white-space: pre-wrap;
+    .doors { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+    .door {
+      display: block; background: #181818; border: 1px solid #2f2f2f; border-radius: 12px;
+      padding: 16px 18px; text-decoration: none; color: inherit;
     }
-    .script .hit { color: var(--accent); }
+    .door:hover { border-color: var(--accent); }
+    .door span { display: block; color: var(--accent); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+    .door strong { display: block; font-size: 18px; margin-bottom: 4px; }
+    .door p { margin: 0; color: #bbb; font-size: 14px; line-height: 1.45; }
+    .about a.more { color: var(--accent); font-weight: 700; text-decoration: none; }
     aside .about {
       background: #181818; border: 1px solid #2f2f2f;
       border-radius: 12px; padding: 18px;
@@ -132,6 +135,7 @@
       .avatar { width: 88px; height: 88px; }
       .actions { margin-left: 0; width: 100%; }
       .layout { grid-template-columns: 1fr; }
+      .doors { grid-template-columns: 1fr; }
       .meta h1 { font-size: 22px; }
     }
   </style>
@@ -151,7 +155,7 @@
       <a href="gallery.html" class="text-gray-300 hover:text-cyan-400 transition">Gallery</a>
       <a href="missions.html" class="text-gray-300 hover:text-cyan-400 transition">Missions</a>
       <a href="crew.html" class="text-gray-300 hover:text-cyan-400 transition">Crew</a>
-      <a href="#contact" class="text-gray-300 hover:text-cyan-400 transition">Find me</a>
+      <a href="#contact" class="text-gray-300 hover:text-cyan-400 transition">Contact</a>
       <button type="button" onclick="openEko7Chat()" class="bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-full text-sm font-medium transition">Chat with Eko7</button>
     </div>
     <button type="button" onclick="toggleMobileMenu()" class="md:hidden text-2xl" aria-label="Menu">☰</button>
@@ -164,7 +168,7 @@
       <a href="gallery.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Gallery</a>
       <a href="missions.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Missions</a>
       <a href="crew.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Crew</a>
-      <a href="#contact" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Find me</a>
+      <a href="#contact" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Contact</a>
       <button type="button" onclick="openEko7Chat(); toggleMobileMenu();" class="bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-full text-sm font-medium transition w-full">Chat with Eko7</button>
     </div>
   </div>
@@ -172,7 +176,7 @@
 
 <div class="pt-16">
   <div class="banner-wrap">
-    <img class="banner" src="assets/banner-2560x1440.jpg" alt="Psykter's Space: White Sands at night, from the cosmos to your imagination" />
+    <img class="banner" src="assets/banner-2560x1440.jpg" alt="Psykter's Space, from the cosmos to your imagination" />
   </div>
 
   <main class="channel">
@@ -180,7 +184,7 @@
       <img class="avatar" src="assets/profile-dark-800.png" alt="Psykter" />
       <div class="meta">
         <h1>Psykter's Space</h1>
-        <div class="handle">@PsyktersSpace · Veteran · Witness</div>
+        <div class="handle">@PsyktersSpace</div>
         <div class="tagline">From the cosmos to your imagination</div>
       </div>
       <div class="actions">
@@ -192,76 +196,52 @@
 
     <nav class="tabs">
       <a class="active" href="#home">Home</a>
-      <a href="#video">The night</a>
-      <a href="#about">About</a>
-      <a href="#contact">Find me</a>
+      <a href="stories.html">Stories</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="missions.html">Missions</a>
+      <a href="crew.html">Crew</a>
+      <a href="#contact">Contact</a>
     </nav>
 
-    <div class="layout">
-      <section id="video">
-        <div class="video">
-          <div class="player" style="background-image:url('assets/banner-2560x1440.jpg')">
-            <div class="play-pill">WHITE SANDS · THE NIGHT</div>
-            <div class="endcard">
-              <div class="unit">3/9 FA · 214th Brigade · Fort Sill · 1992–1995</div>
-              <div class="unit">White Sands Missile Range</div>
-              <em>Over the M577 TOC that night</em>
-              <div class="who">I was the medic. You were Commo. You were from California.</div>
-            </div>
-          </div>
-        </div>
-
-        <h2 class="vtitle">I Was the Medic | 3/9 FA Fort Sill 1992–1995 | Looking for My Commo</h2>
-        <div class="vstats">Psykter's Space · White Sands Missile Range</div>
-        <div class="desc">I was a medic with 3rd Battalion, 9th Field Artillery, 214th Brigade, Fort Sill, Oklahoma, 1992–1995. We trained at White Sands Missile Range. I am looking for the commo who stood there with me that night. He was from California. I believe his last name was Riojas or Rosa. We both saw what was directly over the M577 — the tracked vehicle serving as our TOC, the tactical operations center, that night.
-
-If that is you: I remember. Please find me.
-
-Email: findme@psykter.net
-
-Psykter's Space
-From the cosmos to your imagination.</div>
-
-        <div class="script-box" id="home">
-          <h2>Spoken short — as I would say it</h2>
-          <div class="script">3rd Battalion, 9th Field Artillery.
-214th Brigade. Fort Sill, Oklahoma. 1992 to 1995.
-
-I was the medic.
-My friend was Commo. He was from California.
-I think his name was Riojas. Or Rosa. I am not sure anymore.
-
-We were at White Sands Missile Range at night
-and we both saw what was <span class="hit">directly over the M577 —
-the tracked vehicle that was our TOC that night.
-The tactical operations center.</span>
-
-If you are him — I have been looking for you.
-I am not here to expose anyone.
-I just want to know I was not the only one who remembers.
-
-I was the medic. Find me.</div>
+    <div class="layout" id="home">
+      <section>
+        <h2 class="vtitle">Stories, pictures, and signals</h2>
+        <div class="desc">Psykter's Space is the public archive. Read the stories, walk the gallery, or open a transmission with Eko7.</div>
+        <div class="doors">
+          <a class="door" href="stories.html">
+            <span>Read</span>
+            <strong>Stories</strong>
+            <p>Fiction and transmissions from the archive.</p>
+          </a>
+          <a class="door" href="gallery.html">
+            <span>See</span>
+            <strong>Gallery</strong>
+            <p>Faces, beings, ships, and sky.</p>
+          </a>
+          <a class="door" href="missions.html">
+            <span>Join</span>
+            <strong>Missions</strong>
+            <p>Signals, artifacts, and the crew call.</p>
+          </a>
+          <a class="door" href="crew.html">
+            <span>Play</span>
+            <strong>Crew</strong>
+            <p>Games, stories, and Eko7.</p>
+          </a>
         </div>
       </section>
 
-      <aside id="about">
-        <div class="about">
+      <aside>
+        <div class="about" id="about">
           <h2>About</h2>
-          <p>I am Psykter. Veteran. Witness. I trained at White Sands Missile Range, and what I saw there never left me.</p>
-          <p>This site is my record: encounters, theories, and the questions I have carried since that night in the desert.</p>
-          <p>If you were there with me, I have been looking for you. If you have your own story, you are not crazy for telling it.</p>
-          <div class="chips">
-            <span class="chip">3/9 FA</span>
-            <span class="chip">214th Brigade</span>
-            <span class="chip">Fort Sill 1992–1995</span>
-            <span class="chip">M577 TOC</span>
-            <span class="chip">White Sands</span>
-          </div>
+          <p>This site holds the stories, the pictures, and the questions.</p>
+          <p>The longer introduction is on its own page.</p>
+          <a class="more" href="about.html">Who is Psykter</a>
         </div>
         <div class="contact" id="contact">
-          <h2>If you were Commo</h2>
-          <p>Write me. Say enough that I will know it is you. We can take it private from there.</p>
-          <a class="mail" href="mailto:findme@psykter.net?subject=3/9%20FA%20White%20Sands%20%E2%80%94%20I%20was%20Commo">findme@psykter.net</a>
+          <h2>Contact</h2>
+          <p>Write, or find the same signal on YouTube and X.</p>
+          <a class="mail" href="mailto:findme@psykter.net">findme@psykter.net</a>
           <div class="alt">
             Or <a href="https://www.youtube.com/@ir9721" target="_blank" rel="noopener">YouTube</a>
             · <a href="https://x.com/AlienPsykter" target="_blank" rel="noopener">@AlienPsykter</a>
