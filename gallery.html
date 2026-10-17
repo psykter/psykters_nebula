@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <title>Gallery · Psykter's Space</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -27,43 +28,13 @@
 <body class="bg-black text-white">
 <div class="starfield" id="starfield"></div>
 
-<nav id="navbar" class="nav-fixed bg-black/70 border-b border-white/10">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="index.html" class="flex items-center gap-2">
-      <img src="assets/profile-dark-800.png" alt="" class="w-8 h-8 rounded-full object-cover" />
-      <span class="font-bold text-cyan-400">Psykter's Space</span>
-    </a>
-    <div class="hidden md:flex items-center gap-8">
-      <a href="index.html" class="text-gray-300 hover:text-cyan-400 transition">Home</a>
-      <a href="about.html" class="text-gray-300 hover:text-cyan-400 transition">About</a>
-      <a href="stories.html" class="text-gray-300 hover:text-cyan-400 transition">Stories</a>
-      <a href="gallery.html" class="text-cyan-400 font-medium">Gallery</a>
-      <a href="missions.html" class="text-gray-300 hover:text-cyan-400 transition">Missions</a>
-      <a href="crew.html" class="text-gray-300 hover:text-cyan-400 transition">Crew</a>
-      <a href="index.html#contact" class="text-gray-300 hover:text-cyan-400 transition">Contact</a>
-      <button type="button" onclick="openEko7Chat()" class="bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-full text-sm font-medium transition">Chat with Eko7</button>
-    </div>
-    <button type="button" onclick="toggleMobileMenu()" class="md:hidden text-2xl" aria-label="Menu">☰</button>
-  </div>
-  <div id="mobile-menu" class="hidden md:hidden bg-black/90 border-t border-white/10">
-    <div class="px-6 py-4 space-y-3">
-      <a href="index.html" onclick="toggleMobileMenu()" class="block text-gray-300">Home</a>
-      <a href="about.html" onclick="toggleMobileMenu()" class="block text-gray-300">About</a>
-      <a href="stories.html" onclick="toggleMobileMenu()" class="block text-gray-300">Stories</a>
-      <a href="gallery.html" onclick="toggleMobileMenu()" class="block text-cyan-400 font-medium">Gallery</a>
-      <a href="missions.html" onclick="toggleMobileMenu()" class="block text-gray-300">Missions</a>
-      <a href="crew.html" onclick="toggleMobileMenu()" class="block text-gray-300">Crew</a>
-      <a href="index.html#contact" onclick="toggleMobileMenu()" class="block text-gray-300">Contact</a>
-      <button type="button" onclick="openEko7Chat(); toggleMobileMenu();" class="bg-cyan-500 px-4 py-2 rounded-full text-sm w-full">Chat with Eko7</button>
-    </div>
-  </div>
-</nav>
+<script src="js/navbar.js"></script>
 
-<main class="pt-28 pb-20 px-6 max-w-6xl mx-auto">
+<main class="pt-36 pb-20 px-6 max-w-6xl mx-auto">
   <p class="text-cyan-400 text-sm tracking-widest uppercase mb-3">Visual archive</p>
   <h1 class="text-5xl font-bold tracking-tight mb-4">Gallery</h1>
   <p class="text-gray-300 text-lg max-w-2xl mb-8">
-    Faces, beings, ships, and sky from the Psykter’s Space archive — the pictures that belong with the stories.
+    Faces, beings, ships, and sky from Psykter's Space. The sky pictures sit with Orbwatch, the field journal of lights that notice you.
   </p>
 
   <div class="flex flex-wrap gap-2 mb-10" id="filters">
@@ -120,30 +91,26 @@
     { src: "assets/gallery/face-01.jpg", cat: "faces", title: "Psykter mark I", cap: "The original circular face — still the channel avatar.", size: "tall" },
     { src: "assets/gallery/face-02.jpg", cat: "faces", title: "Psykter mark II", cap: "Flame-and-orbit variant of the same being.", size: "" },
     { src: "assets/gallery/face-03.jpg", cat: "faces", title: "Psykter mark III", cap: "Circuit-crown portrait used in early branding.", size: "" },
+    { src: "assets/gallery/being-02.jpg", cat: "beings", title: "Astral visitor II", cap: "A closer look at the same presence.", size: "" },
+    { src: "assets/gallery/cosmos-02.jpg", cat: "cosmos", title: "Swirl", cap: "Also the cover for Dreaming Beyond Stars.", size: "", link: "templates/dreaming-beyond-stars.html", linkText: "Read Dreaming Beyond Stars" },
     { src: "assets/gallery/face-04.jpg", cat: "faces", title: "Watching", cap: "Wide-eyed study. One of the first large alien portraits.", size: "wide" },
     { src: "assets/gallery/being-01.jpg", cat: "beings", title: "Astral visitor", cap: "Tall, quiet, standing in the dark like it already knew the room.", size: "tall" },
-    { src: "assets/gallery/being-02.jpg", cat: "beings", title: "Astral visitor II", cap: "A closer look at the same presence.", size: "" },
-    { src: "assets/gallery/being-03.jpg", cat: "beings", title: "Grey study", cap: "Classic grey, stretched across a long canvas.", size: "wide" },
     { src: "assets/gallery/being-04.jpg", cat: "beings", title: "Field portrait", cap: "Painted like a contactee’s memory, not a textbook.", size: "tall" },
-    { src: "assets/gallery/being-05.jpg", cat: "beings", title: "Abduction sketch", cap: "Light, figure, and the moment after the ground leaves you.", size: "" },
+    { src: "assets/stories/euphroxan.jpg", cat: "stories", title: "Journey to Euphroxan", cap: "The Lone Star Voyager’s destination.", size: "", link: "templates/journey-to-euphroxan.html", linkText: "Read Journey to Euphroxan" },
+    { src: "assets/stories/orbs.jpg", cat: "stories", title: "Orbwatch", cap: "Lights that notice you. The current field journal.", size: "", link: "orbwatch.html", linkText: "Open Orbwatch" },
+    { src: "assets/stories/crops.jpg", cat: "stories", title: "Crops and Cosmos", cap: "The Greenfield farm, visited.", size: "", link: "templates/crops-and-cosmos.html", linkText: "Read Crops and Cosmos" },
     { src: "assets/gallery/being-06.jpg", cat: "beings", title: "Portal", cap: "A ring you do not step through casually.", size: "" },
-    { src: "assets/gallery/being-07.jpg", cat: "beings", title: "Alien tech", cap: "Hardware that does not look like it was made here.", size: "wide" },
-    { src: "assets/gallery/being-08.jpg", cat: "beings", title: "Eko’s face", cap: "The chatbot as a being, before it had a page.", size: "" },
-    { src: "assets/gallery/being-09.jpg", cat: "beings", title: "Astral skin", cap: "A grey that carries the sky under the skin.", size: "tall" },
     { src: "assets/gallery/being-10.jpg", cat: "beings", title: "GhostCode", cap: "Eko7 at the keyboard. The exploration desk, off duty.", size: "" },
+    { src: "assets/gallery/being-08.jpg", cat: "beings", title: "Eko’s face", cap: "The chatbot as a being, before it had a page.", size: "" },
+    { src: "assets/gallery/being-07.jpg", cat: "beings", title: "Alien tech", cap: "Hardware that does not look like it was made here.", size: "wide" },
+    { src: "assets/gallery/being-09.jpg", cat: "beings", title: "Astral skin", cap: "A grey that carries the sky under the skin.", size: "tall" },
     { src: "assets/gallery/cosmos-01.jpg", cat: "cosmos", title: "Galaxy", cap: "A working sky for Psykter’s Space.", size: "wide" },
-    { src: "assets/gallery/cosmos-02.jpg", cat: "cosmos", title: "Swirl", cap: "Also the cover for Dreaming Beyond Stars.", size: "", link: "stories/dreaming-beyond-stars.html", linkText: "Read Dreaming Beyond Stars" },
-    { src: "assets/gallery/cosmos-03.jpg", cat: "cosmos", title: "Starfield", cap: "Empty enough to hear yourself think.", size: "wide" },
+    { src: "assets/gallery/crew-01.jpg", cat: "crew", title: "Captain Eko", cap: "The expeditionary overseer, standing watch.", size: "tall" },
     { src: "assets/gallery/cosmos-04.jpg", cat: "cosmos", title: "Transit", cap: "The road between worlds.", size: "wide" },
     { src: "assets/gallery/cosmos-05.jpg", cat: "cosmos", title: "Station", cap: "A place to dock, not to stay.", size: "wide" },
-    { src: "assets/gallery/cosmos-06.jpg", cat: "cosmos", title: "Cloud mass", cap: "Not weather. Not quite a ship.", size: "" },
     { src: "assets/gallery/craft-01.jpg", cat: "craft", title: "Psykter’s ship", cap: "The vessel as drawn for the site.", size: "wide" },
     { src: "assets/gallery/craft-02.jpg", cat: "craft", title: "Destroyer", cap: "The other kind of visitor.", size: "wide" },
-    { src: "assets/gallery/crew-01.jpg", cat: "crew", title: "Captain Eko", cap: "The expeditionary overseer, standing watch.", size: "tall" },
-    { src: "assets/stories/aria.jpg", cat: "stories", title: "Aria’s Epiphany", cap: "Cover art for the synthocognition tale.", size: "wide", link: "stories/arias-epiphany.html", linkText: "Read Aria’s Epiphany" },
-    { src: "assets/stories/euphroxan.jpg", cat: "stories", title: "Journey to Euphroxan", cap: "The Lone Star Voyager’s destination.", size: "", link: "stories/journey-to-euphroxan.html", linkText: "Read Journey to Euphroxan" },
-    { src: "assets/stories/orbs.jpg", cat: "stories", title: "Orbs", cap: "Book cover for the forest of lights.", size: "", link: "stories/orbs-of-the-ever-changing-presence.html", linkText: "Read Orbs" },
-    { src: "assets/stories/crops.jpg", cat: "stories", title: "Crops and Cosmos", cap: "The Greenfield farm, visited.", size: "", link: "stories/crops-and-cosmos.html", linkText: "Read Crops and Cosmos" }
+    { src: "assets/stories/aria.jpg", cat: "stories", title: "Aria’s Epiphany", cap: "Cover art for the synthocognition tale.", size: "wide", link: "templates/arias-epiphany.html", linkText: "Read Aria’s Epiphany" }
   ];
 
   const grid = document.getElementById("grid");

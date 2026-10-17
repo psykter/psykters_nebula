@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <title>Stories · Psykter's Space</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -17,47 +18,25 @@
 <body class="bg-black text-white">
 <div class="starfield" id="starfield"></div>
 
-<nav id="navbar" class="nav-fixed bg-black/70 border-b border-white/10">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="index.html" class="flex items-center gap-2">
-      <img src="assets/profile-dark-800.png" alt="" class="w-8 h-8 rounded-full object-cover" />
-      <span class="font-bold text-cyan-400">Psykter's Space</span>
-    </a>
-    <div class="hidden md:flex items-center gap-8">
-      <a href="index.html" class="text-gray-300 hover:text-cyan-400 transition">Home</a>
-      <a href="about.html" class="text-gray-300 hover:text-cyan-400 transition">About</a>
-      <a href="stories.html" class="text-cyan-400 font-medium">Stories</a>
-      <a href="gallery.html" class="text-gray-300 hover:text-cyan-400 transition">Gallery</a>
-      <a href="missions.html" class="text-gray-300 hover:text-cyan-400 transition">Missions</a>
-      <a href="crew.html" class="text-gray-300 hover:text-cyan-400 transition">Crew</a>
-      <a href="index.html#contact" class="text-gray-300 hover:text-cyan-400 transition">Contact</a>
-      <button type="button" onclick="openEko7Chat()" class="bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-full text-sm font-medium transition">Chat with Eko7</button>
-    </div>
-    <button type="button" onclick="toggleMobileMenu()" class="md:hidden text-2xl" aria-label="Menu">☰</button>
-  </div>
-  <div id="mobile-menu" class="hidden md:hidden bg-black/90 border-t border-white/10">
-    <div class="px-6 py-4 space-y-3">
-      <a href="index.html" onclick="toggleMobileMenu()" class="block text-gray-300">Home</a>
-      <a href="about.html" onclick="toggleMobileMenu()" class="block text-gray-300">About</a>
-      <a href="stories.html" onclick="toggleMobileMenu()" class="block text-cyan-400 font-medium">Stories</a>
-      <a href="gallery.html" onclick="toggleMobileMenu()" class="block text-gray-300">Gallery</a>
-      <a href="missions.html" onclick="toggleMobileMenu()" class="block text-gray-300">Missions</a>
-      <a href="crew.html" onclick="toggleMobileMenu()" class="block text-gray-300">Crew</a>
-      <a href="index.html#contact" onclick="toggleMobileMenu()" class="block text-gray-300">Contact</a>
-      <button type="button" onclick="openEko7Chat(); toggleMobileMenu();" class="bg-cyan-500 px-4 py-2 rounded-full text-sm w-full">Chat with Eko7</button>
-    </div>
-  </div>
-</nav>
+<script src="js/navbar.js"></script>
 
-<main class="pt-28 pb-20 px-6 max-w-6xl mx-auto">
+<main class="pt-36 pb-20 px-6 max-w-6xl mx-auto">
   <p class="text-cyan-400 text-sm tracking-widest uppercase mb-3">From the archive</p>
   <h1 class="text-5xl font-bold tracking-tight mb-4">Stories</h1>
   <p class="text-gray-300 text-lg max-w-2xl mb-14">
-    Tales written for Psykter’s Space — androids, farms, first contact, and a planet that dreams of Earth.
+    The current log is Orbwatch. The older tales stay in the archive — androids, farms, first contact, and a planet that dreams of Earth.
   </p>
 
   <div class="grid md:grid-cols-2 gap-8">
-    <a href="stories/arias-epiphany.html" class="group bg-gray-900/70 border border-purple-400/30 rounded-3xl overflow-hidden hover:border-purple-400 transition">
+    <a href="orbwatch.html" class="group bg-gray-900/70 border border-cyan-400/50 rounded-3xl overflow-hidden hover:border-cyan-300 transition md:col-span-2">
+      <img src="assets/stories/orbs.jpg" alt="Orbwatch" class="w-full h-64 object-cover" />
+      <div class="p-7">
+        <div class="text-xs text-cyan-400 mb-2">CURRENT LOG</div>
+        <h2 class="text-2xl font-bold mb-2 group-hover:text-cyan-300">Orbwatch</h2>
+        <p class="text-gray-400">Lights that notice you. Orbs that pace, split, and change when filmed. This is the field journal.</p>
+      </div>
+    </a>
+    <a href="templates/arias-epiphany.html" class="group bg-gray-900/70 border border-purple-400/30 rounded-3xl overflow-hidden hover:border-purple-400 transition">
       <img src="assets/stories/aria.jpg" alt="Aria's Epiphany" class="w-full h-56 object-cover" />
       <div class="p-7">
         <div class="text-xs text-purple-400 mb-2">SYNTHOCOGNITION</div>
@@ -65,7 +44,7 @@
         <p class="text-gray-400">In the remote mountains, Synths Laboratories builds an android who learns empathy — then has to keep it.</p>
       </div>
     </a>
-    <a href="stories/journey-to-euphroxan.html" class="group bg-gray-900/70 border border-cyan-400/30 rounded-3xl overflow-hidden hover:border-cyan-400 transition">
+    <a href="templates/journey-to-euphroxan.html" class="group bg-gray-900/70 border border-cyan-400/30 rounded-3xl overflow-hidden hover:border-cyan-400 transition">
       <img src="assets/stories/euphroxan.jpg" alt="Journey to Euphroxan" class="w-full h-56 object-cover" />
       <div class="p-7">
         <div class="text-xs text-cyan-400 mb-2">THE LONE STAR VOYAGER · 2442</div>
@@ -73,7 +52,7 @@
         <p class="text-gray-400">Captain Ethan Houston sails for a bioluminescent world where nature and technology already live as one.</p>
       </div>
     </a>
-    <a href="stories/dreaming-beyond-stars.html" class="group bg-gray-900/70 border border-pink-400/30 rounded-3xl overflow-hidden hover:border-pink-400 transition">
+    <a href="templates/dreaming-beyond-stars.html" class="group bg-gray-900/70 border border-pink-400/30 rounded-3xl overflow-hidden hover:border-pink-400 transition">
       <img src="assets/stories/dreaming.jpg" alt="Dreaming Beyond Stars" class="w-full h-56 object-cover" />
       <div class="p-7">
         <div class="text-xs text-pink-400 mb-2">ZEPHYRION</div>
@@ -81,7 +60,7 @@
         <p class="text-gray-400">Zara of Xal'haris dreams as a human on Earth — and wakes a civilization that thought dreams were extinct.</p>
       </div>
     </a>
-    <a href="stories/orbs-of-the-ever-changing-presence.html" class="group bg-gray-900/70 border border-white/20 rounded-3xl overflow-hidden hover:border-white/50 transition">
+    <a href="templates/orbs-of-the-ever-changing-presence.html" class="group bg-gray-900/70 border border-white/20 rounded-3xl overflow-hidden hover:border-white/50 transition">
       <img src="assets/stories/orbs.jpg" alt="Orbs of the Ever-Changing Presence" class="w-full h-56 object-cover" />
       <div class="p-7">
         <div class="text-xs text-gray-400 mb-2">THE FOREST</div>
@@ -89,7 +68,7 @@
         <p class="text-gray-400">Elara follows twilight into the woods and meets lights that remember every civilization that ever was.</p>
       </div>
     </a>
-    <a href="stories/crops-and-cosmos.html" class="group bg-gray-900/70 border border-emerald-400/30 rounded-3xl overflow-hidden hover:border-emerald-400 transition">
+    <a href="templates/crops-and-cosmos.html" class="group bg-gray-900/70 border border-emerald-400/30 rounded-3xl overflow-hidden hover:border-emerald-400 transition">
       <img src="assets/stories/crops.jpg" alt="Crops and Cosmos" class="w-full h-56 object-cover" />
       <div class="p-7">
         <div class="text-xs text-emerald-400 mb-2">THE GREENFIELDS</div>
@@ -97,7 +76,7 @@
         <p class="text-gray-400">Adorable visitors land on a family farm. Zippy comes in peace. The harvest is friendship.</p>
       </div>
     </a>
-    <a href="stories/san-antonio-1890.html" class="group bg-gray-900/70 border border-amber-400/30 rounded-3xl overflow-hidden hover:border-amber-400 transition">
+    <a href="templates/san-antonio-1890.html" class="group bg-gray-900/70 border border-amber-400/30 rounded-3xl overflow-hidden hover:border-amber-400 transition">
       <img src="assets/stories/san-antonio.jpg" alt="San Antonio, 1890" class="w-full h-56 object-cover" />
       <div class="p-7">
         <div class="text-xs text-amber-400 mb-2">TEXAS · 1890</div>
@@ -105,7 +84,7 @@
         <p class="text-gray-400">Ranchers unearth a craft in the Hill Country. The world is not ready. The visitors already are.</p>
       </div>
     </a>
-    <a href="stories/beyond-the-horizon.html" class="group bg-gray-900/70 border border-sky-400/30 rounded-3xl overflow-hidden hover:border-sky-400 transition">
+    <a href="templates/beyond-the-horizon.html" class="group bg-gray-900/70 border border-sky-400/30 rounded-3xl overflow-hidden hover:border-sky-400 transition">
       <img src="assets/stories/horizon.jpg" alt="Beyond the Horizon" class="w-full h-56 object-cover" />
       <div class="p-7">
         <div class="text-xs text-sky-400 mb-2">THE GREAT MIGRATION</div>

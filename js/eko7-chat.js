@@ -198,6 +198,16 @@ function extractSearchTerms(query) {
 function getBasicKnowledge(query) {
   const lowerQuery = query.toLowerCase();
 
+  if (lowerQuery.includes('orbwatch') || lowerQuery.includes('orb watch') || lowerQuery.includes('lights that notice')) {
+    return {
+      results: [{
+        title: "Orbwatch",
+        snippet: "Orbwatch is the current field journal on Psykter's Space. It logs lights that notice you: orbs that pace a car, split into a smaller light, and change when filmed. Send a sighting to findme@psykter.net.",
+        link: "orbwatch.html"
+      }]
+    };
+  }
+
   if (lowerQuery.includes('sun') && (lowerQuery.includes('size') || lowerQuery.includes('large') || lowerQuery.includes('diameter'))) {
     return {
       results: [{

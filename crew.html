@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <title>Crew · Psykter's Space</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -17,39 +18,9 @@
 <body class="bg-black text-white">
 <div class="starfield" id="starfield"></div>
 
-<nav id="navbar" class="nav-fixed bg-black/70 border-b border-white/10">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="index.html" class="flex items-center gap-2">
-      <img src="assets/profile-dark-800.png" alt="" class="w-8 h-8 rounded-full object-cover" />
-      <span class="font-bold text-cyan-400">Psykter's Space</span>
-    </a>
-    <div class="hidden md:flex items-center gap-8">
-      <a href="index.html" class="text-gray-300 hover:text-cyan-400 transition">Home</a>
-      <a href="about.html" class="text-gray-300 hover:text-cyan-400 transition">About</a>
-      <a href="stories.html" class="text-gray-300 hover:text-cyan-400 transition">Stories</a>
-      <a href="gallery.html" class="text-gray-300 hover:text-cyan-400 transition">Gallery</a>
-      <a href="missions.html" class="text-gray-300 hover:text-cyan-400 transition">Missions</a>
-      <a href="crew.html" class="text-cyan-400 font-medium">Crew</a>
-      <a href="index.html#contact" class="text-gray-300 hover:text-cyan-400 transition">Contact</a>
-      <button type="button" onclick="openEko7Chat()" class="bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-full text-sm font-medium transition">Chat with Eko7</button>
-    </div>
-    <button type="button" onclick="toggleMobileMenu()" class="md:hidden text-2xl" aria-label="Menu">☰</button>
-  </div>
-  <div id="mobile-menu" class="hidden md:hidden bg-black/90 border-t border-white/10">
-    <div class="px-6 py-4 space-y-3">
-      <a href="index.html" onclick="toggleMobileMenu()" class="block text-gray-300">Home</a>
-      <a href="about.html" onclick="toggleMobileMenu()" class="block text-gray-300">About</a>
-      <a href="stories.html" onclick="toggleMobileMenu()" class="block text-gray-300">Stories</a>
-      <a href="gallery.html" onclick="toggleMobileMenu()" class="block text-gray-300">Gallery</a>
-      <a href="missions.html" onclick="toggleMobileMenu()" class="block text-gray-300">Missions</a>
-      <a href="crew.html" onclick="toggleMobileMenu()" class="block text-cyan-400 font-medium">Crew</a>
-      <a href="index.html#contact" onclick="toggleMobileMenu()" class="block text-gray-300">Contact</a>
-      <button type="button" onclick="openEko7Chat(); toggleMobileMenu();" class="bg-cyan-500 px-4 py-2 rounded-full text-sm font-medium w-full">Chat with Eko7</button>
-    </div>
-  </div>
-</nav>
+<script src="js/navbar.js"></script>
 
-<main class="pt-28 pb-20 px-6 max-w-6xl mx-auto">
+<main class="pt-36 pb-20 px-6 max-w-6xl mx-auto">
   <p class="text-cyan-400 text-sm tracking-widest uppercase mb-3">Entertainment wing</p>
   <h1 class="text-5xl font-bold tracking-tight mb-4">Crew</h1>
   <p class="text-gray-300 text-lg max-w-2xl mb-12">
@@ -57,6 +28,11 @@
   </p>
 
   <div class="grid md:grid-cols-2 gap-6">
+    <a href="orbwatch.html" class="block bg-gray-900/70 border border-cyan-400/50 rounded-3xl p-8 hover:border-cyan-300 hover:scale-[1.02] transition">
+      <div class="text-xs text-cyan-400 mb-3">CURRENT LOG</div>
+      <h2 class="text-2xl font-bold mb-2">Orbwatch</h2>
+      <p class="text-gray-400">Lights that notice you. The field journal of orbs that pace, split, and change when filmed.</p>
+    </a>
     <a href="play/aid.html" class="block bg-gray-900/70 border border-cyan-400/30 rounded-3xl p-8 hover:border-cyan-400 hover:scale-[1.02] transition">
       <div class="text-xs text-cyan-400 mb-3">PLAY</div>
       <h2 class="text-2xl font-bold mb-2">Alien Invasion Defense</h2>
