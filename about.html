@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Psykter • Cosmic Command Center</title>
+  <title>About · Psykter's Space</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
@@ -33,39 +33,10 @@
 <div class="starfield" id="starfield"></div>
 
 <!-- Navigation -->
-<nav id="navbar" class="nav-fixed bg-black/30 border-b border-white/10 transition-all duration-300">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <div class="flex items-center gap-2">
-      <img src="assets/profile-dark-800.png" alt="" class="w-8 h-8 rounded-full object-cover" />
-      <span class="font-bold text-cyan-400">Psykter's Space</span>
-    </div>
-    <div class="hidden md:flex items-center gap-8">
-      <a href="index.html" class="text-gray-300 hover:text-cyan-400 transition">Home</a>
-      <a href="about.html" class="text-cyan-400 font-medium">About</a>
-      <a href="stories.html" class="text-gray-300 hover:text-cyan-400 transition">Stories</a>
-      <a href="gallery.html" class="text-gray-300 hover:text-cyan-400 transition">Gallery</a>
-      <a href="missions.html" class="text-gray-300 hover:text-cyan-400 transition">Missions</a>
-      <a href="crew.html" class="text-gray-300 hover:text-cyan-400 transition">Crew</a>
-      <button onclick="openEko7Chat()" class="bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-full text-sm font-medium transition">Chat with Eko7</button>
-    </div>
-    <button onclick="toggleMobileMenu()" class="md:hidden text-2xl">☰</button>
-  </div>
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-black/90 border-t border-white/10">
-    <div class="px-6 py-4 space-y-3">
-      <a href="index.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Home</a>
-      <a href="about.html" onclick="toggleMobileMenu()" class="block text-cyan-400 font-medium">About</a>
-      <a href="stories.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Stories</a>
-      <a href="gallery.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Gallery</a>
-      <a href="missions.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Missions</a>
-      <a href="crew.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-cyan-400 transition">Crew</a>
-      <button onclick="openEko7Chat(); toggleMobileMenu();" class="bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-full text-sm font-medium transition w-full">Chat with Eko7</button>
-    </div>
-  </div>
-</nav>
+<script src="js/navbar.js"></script>
 
 <!-- Main Content -->
-<main class="pt-24 pb-16 min-h-screen">
+<main class="pt-36 pb-16 min-h-screen">
   <!-- ABOUT PSYKTER - EPIC VERSION -->
   <section class="py-24 fade-in">
     <div class="max-w-4xl mx-auto px-6 text-center">
@@ -406,7 +377,7 @@
 
 <!-- Footer -->
 <footer class="py-12 text-center text-gray-500 text-sm border-t border-white/10">
-  © Psykter's Nebula • Floating somewhere in the cosmos • 2026<br>
+  © Psykter's Space · From the cosmos to your imagination<br>
   <a href="https://x.com/AlienPsykter" target="_blank" class="text-cyan-400 hover:text-cyan-300">Follow the signal @AlienPsykter</a>
 </footer>
 
@@ -462,25 +433,6 @@
     const mobileMenu = document.getElementById('mobile-menu');
     mobileMenu.classList.toggle('hidden');
   }
-
-  // Navigation scroll effects
-  let lastScroll = 0;
-  const navbar = document.getElementById('navbar');
-  
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    // Add/remove background based on scroll
-    if (currentScroll > 50) {
-      navbar.classList.add('bg-black/80');
-      navbar.classList.remove('bg-black/30');
-    } else {
-      navbar.classList.add('bg-black/30');
-      navbar.classList.remove('bg-black/80');
-    }
-    
-    lastScroll = currentScroll;
-  });
 
   // Intersection Observer for fade-in animations
   const observerOptions = {
